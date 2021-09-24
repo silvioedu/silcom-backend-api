@@ -18,6 +18,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class ContatoTipoService {
     
+    
     private static final String ID_IN_USE = "Tipo de contato id %d em uso";
     private static final String ALREADY_EXISTS = "Tipo de contato nome '%s' já existe";
     private static final String NOME_NOT_FOUND = "Não foram encontrados tipos de contato com o nome '%s'";
