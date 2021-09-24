@@ -26,6 +26,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/cadastros/produtos/detalhes")
 public class ProdutoDetalheController {
     
+    
     @Autowired
     private ProdutoDetalheService produtoDetalheService;
 
