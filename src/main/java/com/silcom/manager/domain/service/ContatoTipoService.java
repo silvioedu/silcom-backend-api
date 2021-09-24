@@ -10,7 +10,6 @@ import com.silcom.manager.domain.exception.ResourceInUseException;
 import com.silcom.manager.domain.exception.ResourceNotFoundException;
 import com.silcom.manager.domain.model.ContatoTipo;
 import com.silcom.manager.domain.repository.ContatoTipoRepository;
-import com.silcom.manager.domain.repository.ProdutoRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
