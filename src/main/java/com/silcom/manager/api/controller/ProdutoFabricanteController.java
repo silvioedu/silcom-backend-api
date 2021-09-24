@@ -8,6 +8,7 @@ import com.silcom.manager.api.assembler.input.ProdutoFabricanteInputAssembler;
 import com.silcom.manager.api.assembler.output.ProdutoFabricanteOutputAssembler;
 import com.silcom.manager.api.dto.input.ProdutoFabricanteInputDTO;
 import com.silcom.manager.api.dto.output.ProdutoFabricanteOutputDTO;
+import com.silcom.manager.domain.model.ProdutoFabricante;
 import com.silcom.manager.domain.service.ProdutoFabricanteService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -53,7 +54,7 @@ public class ProdutoFabricanteController {
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public ProdutoFabricanteOutputDTO insert(@RequestBody @Valid ProdutoFabricanteInputDTO produtoFabricanteInputDTO) {
-        var produtoFabricante = produtoFabricanteInputAssembler.toModel(produtoFabricanteInputDTO);
+        ProdutoFabricante produtoFabricante = produtoFabricanteInputAssembler.toModel(produtoFabricanteInputDTO);
         return produtoFabricanteOutputAssembler.toDTO(produtoFabricanteService.insert(produtoFabricante));
     }
 
@@ -66,7 +67,7 @@ public class ProdutoFabricanteController {
     @PutMapping("/{id}")
     public ProdutoFabricanteOutputDTO update(@PathVariable(required = true) Long id, 
         @RequestBody @Valid ProdutoFabricanteInputDTO produtoFabricanteInputDTO) {
-        var produtoFabricante = produtoFabricanteInputAssembler.toModel(produtoFabricanteInputDTO);
+        ProdutoFabricante produtoFabricante = produtoFabricanteInputAssembler.toModel(produtoFabricanteInputDTO);
         return produtoFabricanteOutputAssembler.toDTO(produtoFabricanteService.update(id, produtoFabricante));
     }
 }

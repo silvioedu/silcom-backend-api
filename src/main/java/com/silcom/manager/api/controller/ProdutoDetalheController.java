@@ -8,6 +8,7 @@ import com.silcom.manager.api.assembler.input.ProdutoDetalheInputAssembler;
 import com.silcom.manager.api.assembler.output.ProdutoDetalheOutputAssembler;
 import com.silcom.manager.api.dto.input.ProdutoDetalheInputDTO;
 import com.silcom.manager.api.dto.output.ProdutoDetalheOutputDTO;
+import com.silcom.manager.domain.model.ProdutoDetalhe;
 import com.silcom.manager.domain.service.ProdutoDetalheService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -53,7 +54,7 @@ public class ProdutoDetalheController {
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public ProdutoDetalheOutputDTO insert(@RequestBody @Valid ProdutoDetalheInputDTO produtoDetalheInputDTO) {
-        var produtoDetalhe = produtoDetalheInputAssembler.toModel(produtoDetalheInputDTO);
+        ProdutoDetalhe produtoDetalhe = produtoDetalheInputAssembler.toModel(produtoDetalheInputDTO);
         return produtoDetalheOutputAssembler.toDTO(produtoDetalheService.insert(produtoDetalhe));
     }
 
@@ -66,7 +67,7 @@ public class ProdutoDetalheController {
     @PutMapping("/{id}")
     public ProdutoDetalheOutputDTO update(@PathVariable(required = true) Long id, 
         @RequestBody @Valid ProdutoDetalheInputDTO produtoDetalheInputDTO) {
-        var produtoDetalhe = produtoDetalheInputAssembler.toModel(produtoDetalheInputDTO);
+        ProdutoDetalhe produtoDetalhe = produtoDetalheInputAssembler.toModel(produtoDetalheInputDTO);
         return produtoDetalheOutputAssembler.toDTO(produtoDetalheService.update(id, produtoDetalhe));
     }
 }

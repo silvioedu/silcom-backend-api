@@ -35,7 +35,7 @@ public class RamoService {
     }
     
     public List<Ramo> findByNomeContaining(final String nome) {
-        var ramos = ramoRepository.findByNomeContaining(nome);
+        List<Ramo> ramos = ramoRepository.findByNomeContaining(nome);
         if (ramos.isEmpty()) {
             throw new ResourceNotFoundException(
                 String.format(NOME_NOT_FOUND, nome)
@@ -46,7 +46,7 @@ public class RamoService {
 
     @Transactional
     public Ramo insert(final Ramo ramo) {
-        var ramoFormatado = ramo;
+        Ramo ramoFormatado = ramo;
         ramo.format();
 
         if (ramoRepository.existsByNome(ramo.getNome())) {
@@ -63,10 +63,10 @@ public class RamoService {
 
     @Transactional
     public Ramo update(final Long id, final Ramo ramo) {
-        var ramoFormatado = ramo;
+        Ramo ramoFormatado = ramo;
         ramo.format();
         
-        var ramoRecovered = this.findById(id);
+        Ramo ramoRecovered = this.findById(id);
         if (!ramoRecovered.getNome().equals(ramoFormatado.getNome()) &&
             ramoRepository.existsByNome(ramo.getNome())) {
                 throw new DuplicateKeyException(

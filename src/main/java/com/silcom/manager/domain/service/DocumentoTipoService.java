@@ -41,7 +41,7 @@ public class DocumentoTipoService {
     }
     
     public List<DocumentoTipo> findByNomeContaining(final String nome) {
-        var documentoTipos = documentoTipoRepository.findByNomeContainingIgnoreCase(nome);
+        List<DocumentoTipo> documentoTipos = documentoTipoRepository.findByNomeContainingIgnoreCase(nome);
         if (documentoTipos.isEmpty()) {
             throw new ResourceNotFoundException(
                 String.format(NOME_NOT_FOUND, nome)
@@ -52,7 +52,7 @@ public class DocumentoTipoService {
 
     @Transactional
     public DocumentoTipo insert(final DocumentoTipo documentoTipo) {
-        var documentoTipoFormatado = documentoTipo;
+        DocumentoTipo documentoTipoFormatado = documentoTipo;
 
         if (documentoTipoRepository.existsByNomeIgnoreCase(documentoTipo.getNome())) {
             throw new DuplicateKeyException(
@@ -72,9 +72,9 @@ public class DocumentoTipoService {
 
     @Transactional
     public DocumentoTipo update(final Long id, final DocumentoTipo documentoTipo) {
-        var documentoTipoFormatado = documentoTipo;
+        DocumentoTipo documentoTipoFormatado = documentoTipo;
         
-        var documentoTipoRecovered = this.findById(id);
+        DocumentoTipo documentoTipoRecovered = this.findById(id);
         if ((!documentoTipoRecovered.getNome().equals(documentoTipoFormatado.getNome()) &&
             documentoTipoRepository.existsByNomeIgnoreCase(documentoTipo.getNome()))) {
                 throw new DuplicateKeyException(

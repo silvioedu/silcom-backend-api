@@ -8,6 +8,7 @@ import com.silcom.manager.api.assembler.input.ProdutoCorInputAssembler;
 import com.silcom.manager.api.assembler.output.ProdutoCorOutputAssembler;
 import com.silcom.manager.api.dto.input.ProdutoCorInputDTO;
 import com.silcom.manager.api.dto.output.ProdutoCorOutputDTO;
+import com.silcom.manager.domain.model.ProdutoCor;
 import com.silcom.manager.domain.service.ProdutoCorService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -53,7 +54,7 @@ public class ProdutoCorController {
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public ProdutoCorOutputDTO insert(@RequestBody @Valid ProdutoCorInputDTO produtoCorInputDTO) {
-        var produtoCor = produtoCorInputAssembler.toModel(produtoCorInputDTO);
+        ProdutoCor produtoCor = produtoCorInputAssembler.toModel(produtoCorInputDTO);
         return produtoCorOutputAssembler.toDTO(produtoCorService.insert(produtoCor));
     }
 
@@ -66,7 +67,7 @@ public class ProdutoCorController {
     @PutMapping("/{id}")
     public ProdutoCorOutputDTO update(@PathVariable(required = true) Long id, 
         @RequestBody @Valid ProdutoCorInputDTO produtoCorInputDTO) {
-        var produtoCor = produtoCorInputAssembler.toModel(produtoCorInputDTO);
+        ProdutoCor produtoCor = produtoCorInputAssembler.toModel(produtoCorInputDTO);
         return produtoCorOutputAssembler.toDTO(produtoCorService.update(id, produtoCor));
     }
 }

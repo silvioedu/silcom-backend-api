@@ -70,7 +70,7 @@ public class ProdutoService {
         Produto newProduto = createProduto(produto);
         newProduto.format();
 
-        var produtoRecovered = this.findById(id);
+        Produto produtoRecovered = this.findById(id);
         if ((!produtoRecovered.getCodigo().equals(newProduto.getCodigo()) &&
             produtoRepository.existsByCodigoIgnoreCase(produto.getCodigo()))) {
                 throw new DuplicateKeyException(

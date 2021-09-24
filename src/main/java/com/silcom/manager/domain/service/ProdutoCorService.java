@@ -41,18 +41,18 @@ public class ProdutoCorService {
     }
     
     public List<ProdutoCor> findByNomeContaining(final String nome) {
-        var produtoCors = produtoCorRepository.findByNomeContainingIgnoreCase(nome);
-        if (produtoCors.isEmpty()) {
+        List<ProdutoCor> produtoCores = produtoCorRepository.findByNomeContainingIgnoreCase(nome);
+        if (produtoCores.isEmpty()) {
             throw new ResourceNotFoundException(
                 String.format(NOME_NOT_FOUND, nome)
             ); 
         }
-        return produtoCors;
+        return produtoCores;
     }
 
     @Transactional
     public ProdutoCor insert(final ProdutoCor produtoCor) {
-        var produtoCorFormatado = produtoCor;
+        ProdutoCor produtoCorFormatado = produtoCor;
         produtoCorFormatado.format();
 
         if (produtoCorRepository.existsByNomeIgnoreCase(produtoCor.getNome()) ||
@@ -74,10 +74,10 @@ public class ProdutoCorService {
 
     @Transactional
     public ProdutoCor update(final Long id, final ProdutoCor produtoCor) {
-        var produtoCorFormatado = produtoCor;
+        ProdutoCor produtoCorFormatado = produtoCor;
         produtoCorFormatado.format();
         
-        var produtoCorRecovered = this.findById(id);
+        ProdutoCor produtoCorRecovered = this.findById(id);
         if ((!produtoCorRecovered.getNome().equals(produtoCorFormatado.getNome()) &&
             produtoCorRepository.existsByNomeIgnoreCase(produtoCor.getNome()) ) ||
             (!produtoCorRecovered.getSigla().equals(produtoCorFormatado.getSigla()) &&

@@ -8,6 +8,7 @@ import com.silcom.manager.api.assembler.input.ContatoTipoInputAssembler;
 import com.silcom.manager.api.assembler.output.ContatoTipoOutputAssembler;
 import com.silcom.manager.api.dto.input.ContatoTipoInputDTO;
 import com.silcom.manager.api.dto.output.ContatoTipoOutputDTO;
+import com.silcom.manager.domain.model.ContatoTipo;
 import com.silcom.manager.domain.service.ContatoTipoService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -53,7 +54,7 @@ public class ContatoTipoController {
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public ContatoTipoOutputDTO insert(@RequestBody @Valid ContatoTipoInputDTO contatoTipoInputDTO) {
-        var contatoTipo = contatoTipoInputAssembler.toModel(contatoTipoInputDTO);
+        ContatoTipo contatoTipo = contatoTipoInputAssembler.toModel(contatoTipoInputDTO);
         return contatoTipoOutputAssembler.toDTO(contatoTipoService.insert(contatoTipo));
     }
 
@@ -66,7 +67,7 @@ public class ContatoTipoController {
     @PutMapping("/{id}")
     public ContatoTipoOutputDTO update(@PathVariable(required = true) Long id, 
         @RequestBody @Valid ContatoTipoInputDTO contatoTipoInputDTO) {
-        var contatoTipo = contatoTipoInputAssembler.toModel(contatoTipoInputDTO);
+        ContatoTipo contatoTipo = contatoTipoInputAssembler.toModel(contatoTipoInputDTO);
         return contatoTipoOutputAssembler.toDTO(contatoTipoService.update(id, contatoTipo));
     }
 }

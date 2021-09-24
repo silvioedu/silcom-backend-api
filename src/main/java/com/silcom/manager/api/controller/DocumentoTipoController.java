@@ -8,6 +8,7 @@ import com.silcom.manager.api.assembler.input.DocumentoTipoInputAssembler;
 import com.silcom.manager.api.assembler.output.DocumentoTipoOutputAssembler;
 import com.silcom.manager.api.dto.input.DocumentoTipoInputDTO;
 import com.silcom.manager.api.dto.output.DocumentoTipoOutputDTO;
+import com.silcom.manager.domain.model.DocumentoTipo;
 import com.silcom.manager.domain.service.DocumentoTipoService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -53,7 +54,7 @@ public class DocumentoTipoController {
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public DocumentoTipoOutputDTO insert(@RequestBody @Valid DocumentoTipoInputDTO documentoTipoInputDTO) {
-        var documentoTipo = documentoTipoInputAssembler.toModel(documentoTipoInputDTO);
+        DocumentoTipo documentoTipo = documentoTipoInputAssembler.toModel(documentoTipoInputDTO);
         return documentoTipoOutputAssembler.toDTO(documentoTipoService.insert(documentoTipo));
     }
 
@@ -66,7 +67,7 @@ public class DocumentoTipoController {
     @PutMapping("/{id}")
     public DocumentoTipoOutputDTO update(@PathVariable(required = true) Long id, 
         @RequestBody @Valid DocumentoTipoInputDTO documentoTipoInputDTO) {
-        var documentoTipo = documentoTipoInputAssembler.toModel(documentoTipoInputDTO);
+        DocumentoTipo documentoTipo = documentoTipoInputAssembler.toModel(documentoTipoInputDTO);
         return documentoTipoOutputAssembler.toDTO(documentoTipoService.update(id, documentoTipo));
     }
 }

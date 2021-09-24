@@ -14,19 +14,19 @@ import org.springframework.stereotype.Component;
 public class ProdutoInputAssembler {
     
     public Produto toModel(ProdutoInputDTO produto) {
-        var produtoTipo = new ProdutoTipo();
+        ProdutoTipo produtoTipo = new ProdutoTipo();
         produtoTipo.setId(produto.getTipoId());
 
-        var produtoDetalhe = new ProdutoDetalhe();
+        ProdutoDetalhe produtoDetalhe = new ProdutoDetalhe();
         produtoDetalhe.setId(produto.getDetalheId());
 
-        var produtoComplemento = new ProdutoComplemento();
+        ProdutoComplemento produtoComplemento = new ProdutoComplemento();
         produtoComplemento.setId(produto.getComplementoId());
 
-        var produtoCor = new ProdutoCor();
+        ProdutoCor produtoCor = new ProdutoCor();
         produtoCor.setId(produto.getCorId());
 
-        var produtoFabricante = new ProdutoFabricante();
+        ProdutoFabricante produtoFabricante = new ProdutoFabricante();
         produtoFabricante.setId(produto.getFabricanteId());
 
         return Produto.builder()

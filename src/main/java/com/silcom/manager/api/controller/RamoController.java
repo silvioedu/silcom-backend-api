@@ -8,6 +8,7 @@ import com.silcom.manager.api.assembler.input.RamoInputAssembler;
 import com.silcom.manager.api.assembler.output.RamoOutputAssembler;
 import com.silcom.manager.api.dto.input.RamoInputDTO;
 import com.silcom.manager.api.dto.output.RamoOutputDTO;
+import com.silcom.manager.domain.model.Ramo;
 import com.silcom.manager.domain.service.RamoService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -53,7 +54,7 @@ public class RamoController {
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public RamoOutputDTO insert(@RequestBody @Valid RamoInputDTO ramoInputDTO) {
-        var ramo = ramoInputAssembler.toModel(ramoInputDTO);
+        Ramo ramo = ramoInputAssembler.toModel(ramoInputDTO);
         return ramoOutputAssembler.toDTO(ramoService.insert(ramo));
     }
 
@@ -66,7 +67,7 @@ public class RamoController {
     @PutMapping("/{id}")
     public RamoOutputDTO update(@PathVariable(required = true) Long id, 
         @RequestBody @Valid RamoInputDTO ramoInputDTO) {
-        var ramo = ramoInputAssembler.toModel(ramoInputDTO);
+        Ramo ramo = ramoInputAssembler.toModel(ramoInputDTO);
         return ramoOutputAssembler.toDTO(ramoService.update(id, ramo));
     }
 }

@@ -41,7 +41,7 @@ public class ProdutoFabricanteService {
     }
     
     public List<ProdutoFabricante> findByNomeContaining(final String nome) {
-        var produtoFabricantes = produtoFabricanteRepository.findByNomeContainingIgnoreCase(nome);
+        List<ProdutoFabricante> produtoFabricantes = produtoFabricanteRepository.findByNomeContainingIgnoreCase(nome);
         if (produtoFabricantes.isEmpty()) {
             throw new ResourceNotFoundException(
                 String.format(NOME_NOT_FOUND, nome)
@@ -52,7 +52,7 @@ public class ProdutoFabricanteService {
 
     @Transactional
     public ProdutoFabricante insert(final ProdutoFabricante produtoFabricante) {
-        var produtoFabricanteFormatado = produtoFabricante;
+        ProdutoFabricante produtoFabricanteFormatado = produtoFabricante;
         produtoFabricanteFormatado.format();
 
         if (produtoFabricanteRepository.existsByNomeIgnoreCase(produtoFabricante.getNome()) ||
@@ -74,10 +74,10 @@ public class ProdutoFabricanteService {
 
     @Transactional
     public ProdutoFabricante update(final Long id, final ProdutoFabricante produtoFabricante) {
-        var produtoFabricanteFormatado = produtoFabricante;
+        ProdutoFabricante produtoFabricanteFormatado = produtoFabricante;
         produtoFabricanteFormatado.format();
 
-        var produtoFabricanteRecovered = this.findById(id);
+        ProdutoFabricante produtoFabricanteRecovered = this.findById(id);
         if ((!produtoFabricanteRecovered.getNome().equals(produtoFabricanteFormatado.getNome()) &&
             produtoFabricanteRepository.existsByNomeIgnoreCase(produtoFabricante.getNome()) ) ||
             (!produtoFabricanteRecovered.getSigla().equals(produtoFabricanteFormatado.getSigla()) &&
