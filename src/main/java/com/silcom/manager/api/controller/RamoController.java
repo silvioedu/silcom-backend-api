@@ -23,6 +23,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 @RestController
 @RequestMapping("/cadastros/ramos")
 public class RamoController {
@@ -38,6 +41,7 @@ public class RamoController {
 
     @GetMapping
     public List<RamoOutputDTO> listAll() {
+        log.info("Consultando todos os ramos");
         return ramoOutputAssembler.toColletionDTO(ramoService.findAll());
     }
 
