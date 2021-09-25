@@ -16,7 +16,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class ClienteService {
     
-        private static final String ALREADY_EXISTS = "Cliente razão social '%s' já existe";
+    private static final String ALREADY_EXISTS = "Cliente razão social '%s' já existe";
     private static final String NOME_NOT_FOUND = "Não foram encontrados clientes com a razão social '%s'";
     private static final String ID_NOT_FOUND = "Cliente id %d não encontrado";
 
