@@ -13,7 +13,6 @@ public class RamoMock {
         ramo.setId(RandomUtils.nextLong(1, 24));
         ramo.setNome("Nome Ramo " + ramo.getId());
         ramo.setDataCriacao(OffsetDateTime.now());
-
         return ramo;
     }
 
@@ -24,4 +23,10 @@ public class RamoMock {
         return input;
     }
 
+    public static Ramo getRealInstance() {
+        Ramo ramo = new Ramo();
+        ramo.setId(1L);
+        ramo.setNome("AÇOUGUE");
+        return ramo;
+    }
 }

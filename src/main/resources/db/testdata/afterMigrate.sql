@@ -196,7 +196,10 @@ insert into tbldocumentotipo values
 
 insert into tblcliente values 
 (1, 'Cliente número 1', 'Clientão', 1, 'J', 'Observação 1', now() at time zone 'utc', now() at time zone 'utc'),
-(2, 'Cliente número 2', 'Clientinho', 2, 'J', 'Observação 2', now() at time zone 'utc', now() at time zone 'utc');
+(2, 'Cliente número 2', 'Clientinho', 2, 'J', 'Observação 2', now() at time zone 'utc', now() at time zone 'utc'),
+(3, 'Cliente número 3', 'Clientelho', 3, 'F', 'Observação 3', now() at time zone 'utc', now() at time zone 'utc'),
+(4, 'Cliente número 4', 'Clientasso', 4, 'F', 'Observação 4', now() at time zone 'utc', now() at time zone 'utc');
+
 
 insert into tblclientecontato values 
 (1, 1, 1, '3366-3366', 'Residencial cliente 1', now() at time zone 'utc', now() at time zone 'utc'),
