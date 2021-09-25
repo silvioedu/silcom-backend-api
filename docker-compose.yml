@@ -1,0 +1,14 @@
+version: '3'
+
+services:
+  ms-email-db:
+    image: postgres
+    container_name: postgres_silcomdb
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: "12345"
+      POSTGRES_DB: silcomdb
+    ports:
+      - "15432:5432"
+    volumes:
+      - ./db:/var/lib/postgresql/data 
