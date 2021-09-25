@@ -1,7 +1,5 @@
-CREATE SEQUENCE tblproduto_seq;
-
 CREATE TABLE tblproduto(
-    id bigint not null default nextval ('tblproduto_seq'),
+    id bigint not null,
     id_tipo bigint not null REFERENCES tblprodutotipo(id),
     id_cor bigint not null REFERENCES tblprodutocor(id),
     id_detalhe bigint not null REFERENCES tblprodutodetalhe(id),

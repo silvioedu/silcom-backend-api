@@ -1,7 +1,5 @@
-CREATE SEQUENCE tblclientecontato_seq;
-
 CREATE TABLE tblclientecontato(
-    id bigint not null default nextval ('tblclientecontato_seq'),
+    id bigint not null,
     id_cliente bigint not null REFERENCES tblcliente(id),
     id_tipo_contato bigint not null REFERENCES tblcontatotipo(id),
     contato varchar(80) not null,

@@ -1,7 +1,5 @@
-CREATE SEQUENCE tblclientedocumento_seq;
-
 CREATE TABLE tblclientedocumento(
-    id bigint not null default nextval ('tblclientedocumento_seq'),
+    id bigint not null,
     id_cliente bigint not null REFERENCES tblcliente(id),
     id_tipo_documento bigint not null REFERENCES tbldocumentotipo(id),
     documento varchar(80) not null,

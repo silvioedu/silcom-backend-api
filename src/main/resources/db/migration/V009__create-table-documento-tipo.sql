@@ -1,7 +1,5 @@
-CREATE SEQUENCE tbldocumentotipo_seq;
-
 CREATE TABLE tbldocumentotipo(
-    id bigint not null default nextval ('tbldocumentotipo_seq'),
+    id bigint not null,
     nome varchar(20) not null,
     data_criacao timestamp(0) not null,
     data_atualizacao timestamp(0) not null,

@@ -12,16 +12,6 @@ delete from tblprodutotipo;
 delete from tblcontatotipo;
 delete from tbldocumentotipo;
 
-alter sequence tblramo_seq restart with 26;
-alter sequence tblproduto_seq restart with 97;
-alter sequence tblprodutocomplemento_seq restart with 18;
-alter sequence tblprodutocor_seq restart with 12;
-alter sequence tblprodutodetalhe_seq restart with 17;
-alter sequence tblprodutofabricante_seq restart with 20;
-alter sequence tblprodutotipo_seq restart with 13;
-alter sequence tblcontatotipo_seq restart with 7;
-alter sequence tbldocumentotipo_seq restart with 7;
-
 
 insert into tblramo values 
 (1,'AÇOUGUE', now() at time zone 'utc', now() at time zone 'utc'),

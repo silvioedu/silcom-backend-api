@@ -1,7 +1,5 @@
-CREATE SEQUENCE tblramo_seq;
-
 CREATE TABLE tblramo(
-    id bigint not null default nextval ('tblramo_seq'),
+    id bigint not null,
     nome varchar(60) not null,
     data_criacao timestamp(0) not null,
     data_atualizacao timestamp(0) not null,

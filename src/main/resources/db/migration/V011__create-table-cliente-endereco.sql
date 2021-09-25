@@ -1,7 +1,5 @@
-CREATE SEQUENCE tblclienteendereco_seq;
-
 CREATE TABLE tblclienteendereco(
-    id bigint not null default nextval ('tblclienteendereco_seq'),
+    id bigint not null,
     id_cliente bigint not null REFERENCES tblcliente(id),
     cep varchar(9) not null,
     logradouro varchar(100) not null,

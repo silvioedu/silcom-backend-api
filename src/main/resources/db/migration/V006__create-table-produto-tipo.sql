@@ -1,7 +1,5 @@
-CREATE SEQUENCE tblprodutotipo_seq;
-
 CREATE TABLE tblprodutotipo(
-    id bigint not null default nextval ('tblprodutotipo_seq'),
+    id bigint not null,
     nome varchar(20) not null,
     sigla varchar(01) not null,
     data_criacao timestamp(0) not null,
