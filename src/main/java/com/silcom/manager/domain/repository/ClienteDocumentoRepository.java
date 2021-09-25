@@ -12,4 +12,6 @@ public interface ClienteDocumentoRepository extends PagingAndSortingRepository<C
  
     List<ClienteDocumento> findAll();
 
+    boolean existsByDocumentoTipoId(Long documentoTipoId);
+
 }
