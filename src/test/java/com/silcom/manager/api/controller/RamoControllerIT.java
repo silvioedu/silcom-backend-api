@@ -176,7 +176,7 @@ class RamoControllerIT {
     void shouldReturn404_WhenReceiveDELETE_withFoundId() {
         RestAssured
             .given()
-                .pathParam("id", 1)
+                .pathParam("id", 25)
                 .contentType(ContentType.JSON)
                 .accept(ContentType.JSON)
             .when()

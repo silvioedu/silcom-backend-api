@@ -1,3 +1,7 @@
+delete from tblclientecontato;
+delete from tblclientedocumento;
+delete from tblclienteendereco;
+delete from tblcliente;
 delete from tblramo;
 delete from tblproduto;
 delete from tblprodutocomplemento;
@@ -8,15 +12,15 @@ delete from tblprodutotipo;
 delete from tblcontatotipo;
 delete from tbldocumentotipo;
 
-alter sequence tblramo_seq restart with 25;
+alter sequence tblramo_seq restart with 26;
 alter sequence tblproduto_seq restart with 97;
 alter sequence tblprodutocomplemento_seq restart with 18;
 alter sequence tblprodutocor_seq restart with 12;
 alter sequence tblprodutodetalhe_seq restart with 17;
 alter sequence tblprodutofabricante_seq restart with 20;
 alter sequence tblprodutotipo_seq restart with 13;
-alter sequence tblcontatotipo_seq restart with 6;
-alter sequence tbldocumentotipo_seq restart with 6;
+alter sequence tblcontatotipo_seq restart with 7;
+alter sequence tbldocumentotipo_seq restart with 7;
 
 
 insert into tblramo values 
@@ -43,7 +47,8 @@ insert into tblramo values
 (21, 'PEIXARIA', now() at time zone 'utc', now() at time zone 'utc'),
 (22, 'PIZZARIA', now() at time zone 'utc', now() at time zone 'utc'),
 (23, 'RESTAURANTE', now() at time zone 'utc', now() at time zone 'utc'),
-(24, 'ROTISSERIA', now() at time zone 'utc', now() at time zone 'utc');
+(24, 'ROTISSERIA', now() at time zone 'utc', now() at time zone 'utc'),
+(25, 'TST IT 1', now() at time zone 'utc', now() at time zone 'utc');
 
 insert into tblprodutocomplemento values
 (6, 'Monodensidade Sem bico', '0', now() at time zone 'utc', now() at time zone 'utc'),
@@ -188,11 +193,38 @@ insert into tblcontatotipo values
 (2, 'Telefone Celular', now() at time zone 'utc', now() at time zone 'utc'),
 (3, 'Email', now() at time zone 'utc', now() at time zone 'utc'),
 (4, 'Apenas para Tst IT', now() at time zone 'utc', now() at time zone 'utc'),
-(5, 'Apenas para Tst IT2', now() at time zone 'utc', now() at time zone 'utc');
+(5, 'Apenas para Tst IT2', now() at time zone 'utc', now() at time zone 'utc'),
+(6, 'Apenas para Tst IT3', now() at time zone 'utc', now() at time zone 'utc');
 
 insert into tbldocumentotipo values 
 (1, 'CPF', now() at time zone 'utc', now() at time zone 'utc'),
 (2, 'CNPJ', now() at time zone 'utc', now() at time zone 'utc'),
 (3, 'Inscrição Estadual', now() at time zone 'utc', now() at time zone 'utc'),
 (4, 'Apenas para Tst IT', now() at time zone 'utc', now() at time zone 'utc'),
-(5, 'Apenas para Tst IT2', now() at time zone 'utc', now() at time zone 'utc');
+(5, 'Apenas para Tst IT2', now() at time zone 'utc', now() at time zone 'utc'),
+(6, 'Apenas para Tst IT3', now() at time zone 'utc', now() at time zone 'utc');
+
+insert into tblcliente values 
+(1, 'Cliente número 1', 'Clientão', 1, 'J', 'Observação 1', now() at time zone 'utc', now() at time zone 'utc'),
+(2, 'Cliente número 2', 'Clientinho', 2, 'J', 'Observação 2', now() at time zone 'utc', now() at time zone 'utc');
+
+insert into tblclientecontato values 
+(1, 1, 1, '3366-3366', 'Residencial cliente 1', now() at time zone 'utc', now() at time zone 'utc'),
+(2, 1, 2, '93366-3366', 'Celular cliente 1', now() at time zone 'utc', now() at time zone 'utc'),
+(3, 1, 3, 'cliente.1@cliente.com.br', 'Email cliente 1', now() at time zone 'utc', now() at time zone 'utc'),
+(4, 2, 1, '3344-3344', 'Residencial cliente 2', now() at time zone 'utc', now() at time zone 'utc'),
+(5, 2, 2, '91122-3344', 'Celular cliente 2', now() at time zone 'utc', now() at time zone 'utc'),
+(6, 2, 3, 'cliente.2@cliente.com.br', 'Email cliente 2', now() at time zone 'utc', now() at time zone 'utc');
+
+insert into tblclientedocumento values 
+(1, 1, 1, '123456789-12', false, 'CPF cliente 1', now() at time zone 'utc', now() at time zone 'utc'),
+(2, 1, 2, '123456789/0001-12', false, 'CNPJ cliente 1', now() at time zone 'utc', now() at time zone 'utc'),
+(3, 2, 2, '567891234/0001-99', false, 'CNPJ cliente 2', now() at time zone 'utc', now() at time zone 'utc'),
+(4, 2, 3, '', true, 'IE cliente 2', now() at time zone 'utc', now() at time zone 'utc');
+
+insert into tblclienteendereco values
+(1, 1, '58051-590','Rua Rosa Lima dos Santos','197','Lala','Jardim Cidade Universitária','João Pessoa','PB', 'Endereço 1 cliente 1', now() at time zone 'utc', now() at time zone 'utc'),
+(2, 1, '73020-555','Setor DNOCS Quadra 11','345','','Sobradinho','Brasília','DF', 'Endereço 2 cliente 1', now() at time zone 'utc', now() at time zone 'utc'),
+(3, 2, '53550-610','Rua Cinquenta e Oito','942','','Planalto','Abreu e Lima','PE', 'Endereço 1 cliente 2', now() at time zone 'utc', now() at time zone 'utc'),
+(4, 2, '58434-140','Rua Luzia Gonçalves Pereira','672','','Serrotão','Campina Grande','PB', 'Endereço 2 cliente 2', now() at time zone 'utc', now() at time zone 'utc');
+

@@ -176,7 +176,7 @@ class ContatoTipoControllerIT {
     void shouldReturn404_WhenReceiveDELETE_withFoundId() {
         RestAssured
             .given()
-                .pathParam("id", 3)
+                .pathParam("id", 5)
                 .contentType(ContentType.JSON)
                 .accept(ContentType.JSON)
             .when()
@@ -205,11 +205,11 @@ class ContatoTipoControllerIT {
     @Test
     void shouldReturn409_whenReceivePUT_withDuplicateNomeInput() {
         ContatoTipoInputDTO input = ContatoTipoMock.getInputInstance();
-        input.setNome("Apenas para Tst IT");
+        input.setNome("Email");
 
         RestAssured
             .given()
-                .pathParam("id", 5)
+                .pathParam("id", 6)
                 .body(input)
 				.contentType(ContentType.JSON)
                 .accept(ContentType.JSON)

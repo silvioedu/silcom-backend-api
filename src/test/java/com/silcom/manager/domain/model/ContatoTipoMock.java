@@ -11,7 +11,7 @@ public class ContatoTipoMock {
     public static ContatoTipo getInstance() {
         ContatoTipo contatoTipo = new ContatoTipo();
         contatoTipo.setId(RandomUtils.nextLong(1, 24));
-        contatoTipo.setNome("Nome CttTipo " + contatoTipo.getId());
+        contatoTipo.setNome("Nome CttTp " + contatoTipo.getId());
         contatoTipo.setDataCriacao(OffsetDateTime.now());
 
         return contatoTipo;

@@ -11,7 +11,7 @@ public class DocumentoTipoMock {
     public static DocumentoTipo getInstance() {
         DocumentoTipo documentoTipo = new DocumentoTipo();
         documentoTipo.setId(RandomUtils.nextLong(1, 24));
-        documentoTipo.setNome("Nome DctTipo " + documentoTipo.getId());
+        documentoTipo.setNome("Nome DctTp " + documentoTipo.getId());
         documentoTipo.setDataCriacao(OffsetDateTime.now());
 
         return documentoTipo;

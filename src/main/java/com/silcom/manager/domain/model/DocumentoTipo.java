@@ -9,6 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -29,7 +30,7 @@ public class DocumentoTipo {
     @CreationTimestamp
     private OffsetDateTime dataCriacao;
 
-    @CreationTimestamp
+    @UpdateTimestamp
     private OffsetDateTime dataAtualizacao;
 
 }
