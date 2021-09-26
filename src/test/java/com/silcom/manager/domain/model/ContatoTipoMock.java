@@ -24,4 +24,10 @@ public class ContatoTipoMock {
         return input;
     }
 
+    public static ContatoTipo getRealInstance() {
+        ContatoTipo contatoTipo = new ContatoTipo();
+        contatoTipo.setId(1L);
+        contatoTipo.setNome("Telefone Comercial");
+        return contatoTipo;
+    }
 }
