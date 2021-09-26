@@ -24,4 +24,12 @@ public class DocumentoTipoMock {
         return input;
     }
 
+    public static DocumentoTipo getRealInstance() {
+        DocumentoTipo documentoTipo = new DocumentoTipo();
+        documentoTipo.setId(1L);
+        documentoTipo.setNome("CPF");
+        return documentoTipo;
+    }
+
+
 }

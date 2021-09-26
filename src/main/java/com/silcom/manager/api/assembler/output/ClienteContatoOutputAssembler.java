@@ -16,12 +16,12 @@ public class ClienteContatoOutputAssembler {
     @Autowired
     private ModelMapper modelMapper;
 
-    public ClienteContatoOutputDTO toDTO(ClienteContato cliente) {
-        return modelMapper.map(cliente, ClienteContatoOutputDTO.class);
+    public ClienteContatoOutputDTO toDTO(ClienteContato clienteContato) {
+        return modelMapper.map(clienteContato, ClienteContatoOutputDTO.class);
     }
 
-    public List<ClienteContatoOutputDTO> toColletionDTO(List<ClienteContato> cliente) {
-        return cliente.stream()
+    public List<ClienteContatoOutputDTO> toColletionDTO(List<ClienteContato> clienteContato) {
+        return clienteContato.stream()
             .map(this::toDTO)
             .collect(Collectors.toList());
     }
