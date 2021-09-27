@@ -14,4 +14,5 @@ public interface ClienteContatoRepository extends PagingAndSortingRepository<Cli
 
     boolean existsByContatoTipoId(Long contatoTipoId);
 
+    void deleteByClienteId(Long clienteId);
 }

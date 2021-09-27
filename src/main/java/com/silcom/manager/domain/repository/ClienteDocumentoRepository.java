@@ -14,4 +14,6 @@ public interface ClienteDocumentoRepository extends PagingAndSortingRepository<C
 
     boolean existsByDocumentoTipoId(Long documentoTipoId);
 
+    void deleteByClienteId(Long clienteId);
+
 }

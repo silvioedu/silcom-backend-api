@@ -71,4 +71,8 @@ public class ClienteDocumentoService {
         return clienteDocumento;
     }
 
+    public void deleteByClienteId(Long id) {
+        clienteDocumentoRepository.deleteByClienteId(id);
+    }
+
 }

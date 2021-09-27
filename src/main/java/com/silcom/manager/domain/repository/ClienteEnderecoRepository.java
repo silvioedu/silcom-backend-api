@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface ClienteEnderecoRepository extends PagingAndSortingRepository<ClienteEndereco, Long> {
  
-    List<ClienteEndereco> findAll();
+    List<ClienteEndereco> findAllByClienteId(Long clienteId);
 
+    void deleteByClienteId(Long clienteId);
 }

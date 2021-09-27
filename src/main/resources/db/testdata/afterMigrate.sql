@@ -218,7 +218,7 @@ insert into tblclientedocumento values
 
 insert into tblclienteendereco values
 (1, 1, '58051-590','Rua Rosa Lima dos Santos','197','Lala','Jardim Cidade Universitária','João Pessoa','PB', 'Endereço 1 cliente 1', now() at time zone 'utc', now() at time zone 'utc'),
-(2, 1, '73020-555','Setor DNOCS Quadra 11','345','','Sobradinho','Brasília','DF', 'Endereço 2 cliente 1', now() at time zone 'utc', now() at time zone 'utc'),
-(3, 2, '53550-610','Rua Cinquenta e Oito','942','','Planalto','Abreu e Lima','PE', 'Endereço 1 cliente 2', now() at time zone 'utc', now() at time zone 'utc'),
-(4, 2, '58434-140','Rua Luzia Gonçalves Pereira','672','','Serrotão','Campina Grande','PB', 'Endereço 2 cliente 2', now() at time zone 'utc', now() at time zone 'utc');
+(2, 2, '73020-555','Setor DNOCS Quadra 11','345','','Sobradinho','Brasília','DF', 'Endereço 1 cliente 2', now() at time zone 'utc', now() at time zone 'utc'),
+(3, 3, '53550-610','Rua Cinquenta e Oito','942','','Planalto','Abreu e Lima','PE', 'Endereço 1 cliente 3', now() at time zone 'utc', now() at time zone 'utc'),
+(4, 4, '58434-140','Rua Luzia Gonçalves Pereira','672','','Serrotão','Campina Grande','PB', 'Endereço 1 cliente 4', now() at time zone 'utc', now() at time zone 'utc');
 

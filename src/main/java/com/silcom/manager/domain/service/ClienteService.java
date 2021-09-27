@@ -26,6 +26,15 @@ public class ClienteService {
     @Autowired
     private RamoService ramoService;
 
+    @Autowired
+    private ClienteContatoService clienteContatoService;
+
+    @Autowired
+    private ClienteDocumentoService clienteDocumentoService;
+
+    @Autowired
+    private ClienteEnderecoService clienteEnderecoService;
+
     public List<Cliente> findAll() {
         return clienteRepository.findAllByOrderByRazaoSocialAsc();
     }
@@ -61,8 +70,11 @@ public class ClienteService {
     @Transactional
     public void delete(final Long id) {
         // TODO: verificar se possui pedidos e impedir
+        
+        clienteContatoService.deleteByClienteId(id);
+        clienteDocumentoService.deleteByClienteId(id);
+        clienteEnderecoService.deleteByClienteId(id);
         clienteRepository.delete(this.findById(id));
-        // TODO: remover os dados de contato, documento e endereco
     }
 
     @Transactional

@@ -71,5 +71,9 @@ public class ClienteContatoService {
         return clienteContato;
     }
 
+    public void deleteByClienteId(Long id) {
+        clienteContatoRepository.deleteByClienteId(id);
+    }
+
 
 }
