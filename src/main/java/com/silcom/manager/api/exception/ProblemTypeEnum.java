@@ -13,6 +13,7 @@ public enum ProblemTypeEnum {
     INCOMPREHENSIBLE_MESSAGE (HttpStatus.BAD_REQUEST, "/incomprehensible-message", "Incomprehensible message"),
     INVALID_PARAMETER(HttpStatus.BAD_REQUEST, "/invalid-parameter", "Invalid parameter"),
 
+    INTEGRATION_ERROR(HttpStatus.BAD_REQUEST, "integration-error", "Integration error"),    
     RESOURCE_IN_USE(HttpStatus.CONFLICT, "/resource-in-use", "Resource in use"),
     DUPLICATE_KEY(HttpStatus.CONFLICT, "/duplicate-key", "Duplicate key"),
     RESOURCE_NOT_FOUND(HttpStatus.NOT_FOUND, "/resource-not-found", "Resource not found");

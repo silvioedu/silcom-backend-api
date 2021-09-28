@@ -7,6 +7,7 @@ import java.util.stream.Collectors;
 import com.silcom.manager.domain.exception.DuplicateKeyException;
 import com.silcom.manager.domain.exception.ResourceInUseException;
 import com.silcom.manager.domain.exception.ResourceNotFoundException;
+import com.silcom.manager.domain.exception.RestTemplateException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
@@ -26,6 +27,21 @@ public class ApiExceptionHandler extends ResponseEntityExceptionHandler {
     
     @Autowired
 	private MessageSource messageSource;
+
+    @ExceptionHandler({ RestTemplateException.class })
+	public ResponseEntity<Object> handleApiRestTemplateException(RuntimeException ex) {
+
+        Problem problem = createProblemBuilder(
+            ProblemTypeEnum.INTEGRATION_ERROR.getStatus(), 
+            ProblemTypeEnum.INTEGRATION_ERROR,
+            ex.getMessage(),
+            null)
+            .build();
+
+		return ResponseEntity
+            .status(problem.getStatus())
+            .body(problem);
+	}          
 
     @ExceptionHandler({ ResourceNotFoundException.class })
 	public ResponseEntity<Object> handleApiNotFoundException(RuntimeException ex) {

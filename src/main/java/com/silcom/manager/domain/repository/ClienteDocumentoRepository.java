@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface ClienteDocumentoRepository extends PagingAndSortingRepository<ClienteDocumento, Long> {
  
-    List<ClienteDocumento> findAllByClienteId(Long clienteId);
+    List<ClienteDocumento> findAllByClienteIdOrderByDocumentoTipoNomeAsc(Long clienteId);
 
     boolean existsByDocumentoTipoId(Long documentoTipoId);
 

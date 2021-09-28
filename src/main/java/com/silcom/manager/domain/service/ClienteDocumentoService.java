@@ -31,7 +31,7 @@ public class ClienteDocumentoService {
 
     public List<ClienteDocumento> findAll(final Long clienteId) {
         clienteService.findById(clienteId);
-        return clienteDocumentoRepository.findAllByClienteId(clienteId);
+        return clienteDocumentoRepository.findAllByClienteIdOrderByDocumentoTipoNomeAsc(clienteId);
     }
 
     public ClienteDocumento findById(final Long clienteId, final Long id) {

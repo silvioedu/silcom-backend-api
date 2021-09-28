@@ -214,7 +214,9 @@ insert into tblclientedocumento values
 (2, 1, 2, '123456789/0001-12', false, 'CNPJ cliente 1', now() at time zone 'utc', now() at time zone 'utc'),
 (3, 1, 3, '987654321', false, 'IE cliente 1', now() at time zone 'utc', now() at time zone 'utc'),
 (4, 2, 2, '567891234/0001-99', false, 'CNPJ cliente 2', now() at time zone 'utc', now() at time zone 'utc'),
-(5, 2, 3, '', true, 'IE cliente 2', now() at time zone 'utc', now() at time zone 'utc');
+(5, 2, 3, '', true, 'IE cliente 2', now() at time zone 'utc', now() at time zone 'utc'),
+(6, 1, 1, '6565757-12', false, 'CPF cliente 1', now() at time zone 'utc', now() at time zone 'utc');
+
 
 insert into tblclienteendereco values
 (1, 1, '58051-590','Rua Rosa Lima dos Santos','197','Lala','Jardim Cidade Universitária','João Pessoa','PB', 'Endereço 1 cliente 1', now() at time zone 'utc', now() at time zone 'utc'),

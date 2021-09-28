@@ -31,7 +31,7 @@ public class ClienteContatoService {
 
     public List<ClienteContato> findAll(final Long clienteId) {
         clienteService.findById(clienteId);
-        return clienteContatoRepository.findAllByClienteId(clienteId);
+        return clienteContatoRepository.findAllByClienteIdOrderByContatoTipoNomeAsc(clienteId);
     }
 
     public ClienteContato findById(final Long clienteId, final Long id) {
