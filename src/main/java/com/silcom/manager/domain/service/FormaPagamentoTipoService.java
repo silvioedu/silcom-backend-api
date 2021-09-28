@@ -26,7 +26,7 @@ public class FormaPagamentoTipoService {
     private FormaPagamentoTipoRepository formaPagamentoTipoRepository;
 
     @Autowired
-    private VendaService vendaService;
+    private ClienteVendaService vendaService;
 
     public List<FormaPagamentoTipo> findAll() {
         return formaPagamentoTipoRepository.findAllByOrderByNomeAsc();

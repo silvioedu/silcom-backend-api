@@ -11,7 +11,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class VendaInputDTO {
+public class ClienteVendaInputDTO {
     
     @NotNull
     @Positive

@@ -8,7 +8,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class VendaOutputDTO {
+public class ClienteVendaOutputDTO {
     
     private Long id;
     private Long formaPagamentoTipoId;

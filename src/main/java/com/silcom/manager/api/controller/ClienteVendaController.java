@@ -4,12 +4,12 @@ import java.util.List;
 
 import javax.validation.Valid;
 
-import com.silcom.manager.api.assembler.input.VendaInputAssembler;
-import com.silcom.manager.api.assembler.output.VendaOutputAssembler;
-import com.silcom.manager.api.dto.input.VendaInputDTO;
-import com.silcom.manager.api.dto.output.VendaOutputDTO;
-import com.silcom.manager.domain.model.Venda;
-import com.silcom.manager.domain.service.VendaService;
+import com.silcom.manager.api.assembler.input.ClienteVendaInputAssembler;
+import com.silcom.manager.api.assembler.output.ClienteVendaOutputAssembler;
+import com.silcom.manager.api.dto.input.ClienteVendaInputDTO;
+import com.silcom.manager.api.dto.output.ClienteVendaOutputDTO;
+import com.silcom.manager.domain.model.ClienteVenda;
+import com.silcom.manager.domain.service.ClienteVendaService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -25,31 +25,31 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/clientes/{clienteId}/vendas")
-public class VendaController {
+public class ClienteVendaController {
     
     @Autowired
-    private VendaService vendaService;
+    private ClienteVendaService vendaService;
 
     @Autowired
-    private VendaOutputAssembler vendaOutputAssembler;
+    private ClienteVendaOutputAssembler vendaOutputAssembler;
 
     @Autowired
-    private VendaInputAssembler vendaInputAssembler;
+    private ClienteVendaInputAssembler vendaInputAssembler;
 
     @GetMapping
-    public List<VendaOutputDTO> listAll(@PathVariable(required = true) Long clienteId) {
+    public List<ClienteVendaOutputDTO> listAll(@PathVariable(required = true) Long clienteId) {
         return vendaOutputAssembler.toColletionDTO(vendaService.findAll(clienteId));
     }
 
     @GetMapping("/{vendaId}")
-    public VendaOutputDTO findById(@PathVariable(required = true) Long clienteId, @PathVariable(required = true) Long vendaId) {
+    public ClienteVendaOutputDTO findById(@PathVariable(required = true) Long clienteId, @PathVariable(required = true) Long vendaId) {
         return vendaOutputAssembler.toDTO(vendaService.findById(clienteId, vendaId));
     }
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public VendaOutputDTO insert(@PathVariable(required = true) Long clienteId, @RequestBody @Valid VendaInputDTO vendaInputDTO) {
-        Venda venda = vendaInputAssembler.toModel(vendaInputDTO);
+    public ClienteVendaOutputDTO insert(@PathVariable(required = true) Long clienteId, @RequestBody @Valid ClienteVendaInputDTO vendaInputDTO) {
+        ClienteVenda venda = vendaInputAssembler.toModel(vendaInputDTO);
         return vendaOutputAssembler.toDTO(vendaService.insert(clienteId, venda));
     }
 
@@ -60,10 +60,10 @@ public class VendaController {
     }
 
     @PutMapping("/{vendaId}")
-    public VendaOutputDTO update(@PathVariable(required = true) Long clienteId,
+    public ClienteVendaOutputDTO update(@PathVariable(required = true) Long clienteId,
         @PathVariable(required = true) Long vendaId, 
-        @RequestBody @Valid VendaInputDTO vendaInputDTO) {
-        Venda venda = vendaInputAssembler.toModel(vendaInputDTO);
+        @RequestBody @Valid ClienteVendaInputDTO vendaInputDTO) {
+        ClienteVenda venda = vendaInputAssembler.toModel(vendaInputDTO);
         return vendaOutputAssembler.toDTO(vendaService.update(clienteId, vendaId, venda));
     }
 }

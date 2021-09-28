@@ -24,7 +24,7 @@ import lombok.EqualsAndHashCode;
 @Data
 @Entity
 @Table(name = "tblvenda")
-public class Venda {
+public class ClienteVenda {
 
     @EqualsAndHashCode.Include
     @Id
@@ -57,11 +57,11 @@ public class Venda {
     @UpdateTimestamp
     private OffsetDateTime dataAtualizacao;
 
-    Venda() {
+    ClienteVenda() {
         // default constructor
     }
 
-    public Venda(Long id, Cliente cliente, FormaPagamentoTipo formaPagamentoTipo, BigDecimal desconto, BigDecimal agravo, BigDecimal valorTotal, boolean emitirNota, String observacoes, OffsetDateTime dataCriacao, OffsetDateTime dataAtualizacao) {
+    public ClienteVenda(Long id, Cliente cliente, FormaPagamentoTipo formaPagamentoTipo, BigDecimal desconto, BigDecimal agravo, BigDecimal valorTotal, boolean emitirNota, String observacoes, OffsetDateTime dataCriacao, OffsetDateTime dataAtualizacao) {
         this.id = id;
         this.cliente = cliente;
         this.formaPagamentoTipo = formaPagamentoTipo;

@@ -5,19 +5,19 @@ import java.util.List;
 import javax.transaction.Transactional;
 
 import com.silcom.manager.domain.exception.ResourceNotFoundException;
-import com.silcom.manager.domain.model.Venda;
-import com.silcom.manager.domain.repository.VendaRepository;
+import com.silcom.manager.domain.model.ClienteVenda;
+import com.silcom.manager.domain.repository.ClienteVendaRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class VendaService {
+public class ClienteVendaService {
     
     private static final String ID_NOT_FOUND = "Venda id %d não encontrado para o cliente id %d";
 
     @Autowired
-    private VendaRepository vendaRepository;
+    private ClienteVendaRepository vendaRepository;
 
     @Autowired
     private ClienteService clienteService;
@@ -29,12 +29,12 @@ public class VendaService {
         return vendaRepository.existsByFormaPagamentoTipoId(formaPagamentoTipoId);
     }
 
-    public List<Venda> findAll(final Long clienteId) {
+    public List<ClienteVenda> findAll(final Long clienteId) {
         clienteService.findById(clienteId);
         return vendaRepository.findAllByClienteIdOrderByDataCriacaoAsc(clienteId);
     }
 
-    public Venda findById(final Long clienteId, final Long id) {
+    public ClienteVenda findById(final Long clienteId, final Long id) {
         clienteService.findById(clienteId);
 
         return vendaRepository.findById(id)
@@ -44,8 +44,8 @@ public class VendaService {
     }
 
     @Transactional
-    public Venda insert(final Long clienteId, final Venda venda) {
-        Venda vendaFormatado = createVenda(venda, clienteId);
+    public ClienteVenda insert(final Long clienteId, final ClienteVenda venda) {
+        ClienteVenda vendaFormatado = createVenda(venda, clienteId);
         return vendaRepository.save(vendaFormatado);
     }
 
@@ -55,8 +55,8 @@ public class VendaService {
     }
 
     @Transactional
-    public Venda update(Long clienteId, Long vendaId, Venda venda) {
-        Venda vendaRecovered = this.findById(clienteId, vendaId);
+    public ClienteVenda update(Long clienteId, Long vendaId, ClienteVenda venda) {
+        ClienteVenda vendaRecovered = this.findById(clienteId, vendaId);
  
         venda.setId(vendaRecovered.getId());
         venda.setCliente(vendaRecovered.getCliente());
@@ -65,7 +65,7 @@ public class VendaService {
         return vendaRepository.save(venda);
     }
 
-    private Venda createVenda(Venda venda, Long clienteId) {
+    private ClienteVenda createVenda(ClienteVenda venda, Long clienteId) {
         venda.setCliente(clienteService.findById(clienteId));
         venda.setFormaPagamentoTipo(formaPagamentoTipoService.findById(venda.getFormaPagamentoTipo().getId()));
         return venda;

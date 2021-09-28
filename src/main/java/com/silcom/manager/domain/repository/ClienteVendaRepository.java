@@ -2,15 +2,15 @@ package com.silcom.manager.domain.repository;
 
 import java.util.List;
 
-import com.silcom.manager.domain.model.Venda;
+import com.silcom.manager.domain.model.ClienteVenda;
 
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface VendaRepository extends PagingAndSortingRepository<Venda, Long> {
+public interface ClienteVendaRepository extends PagingAndSortingRepository<ClienteVenda, Long> {
  
-    List<Venda> findAllByClienteIdOrderByDataCriacaoAsc(Long clienteId);
+    List<ClienteVenda> findAllByClienteIdOrderByDataCriacaoAsc(Long clienteId);
 
     boolean existsByFormaPagamentoTipoId(Long formaPagamentoTipo);
 

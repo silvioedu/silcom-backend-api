@@ -36,7 +36,7 @@ public class ClienteService {
     private ClienteEnderecoService clienteEnderecoService;
 
     @Autowired
-    private VendaService vendaService;
+    private ClienteVendaService vendaService;
 
     public List<Cliente> findAll() {
         return clienteRepository.findAllByOrderByRazaoSocialAsc();

@@ -3,24 +3,24 @@ package com.silcom.manager.api.assembler.output;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import com.silcom.manager.api.dto.output.VendaOutputDTO;
-import com.silcom.manager.domain.model.Venda;
+import com.silcom.manager.api.dto.output.ClienteVendaOutputDTO;
+import com.silcom.manager.domain.model.ClienteVenda;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
-public class VendaOutputAssembler {
+public class ClienteVendaOutputAssembler {
     
     @Autowired
     private ModelMapper modelMapper;
 
-    public VendaOutputDTO toDTO(Venda venda) {
-        return modelMapper.map(venda, VendaOutputDTO.class);
+    public ClienteVendaOutputDTO toDTO(ClienteVenda venda) {
+        return modelMapper.map(venda, ClienteVendaOutputDTO.class);
     }
 
-    public List<VendaOutputDTO> toColletionDTO(List<Venda> vendas) {
+    public List<ClienteVendaOutputDTO> toColletionDTO(List<ClienteVenda> vendas) {
         return vendas.stream()
             .map(this::toDTO)
             .collect(Collectors.toList());

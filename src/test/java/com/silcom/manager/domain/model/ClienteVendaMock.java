@@ -3,14 +3,14 @@ package com.silcom.manager.domain.model;
 import java.math.BigDecimal;
 import java.time.OffsetDateTime;
 
-import com.silcom.manager.api.dto.input.VendaInputDTO;
+import com.silcom.manager.api.dto.input.ClienteVendaInputDTO;
 
 import org.apache.commons.lang3.RandomUtils;
 
-public class VendaMock {
+public class ClienteVendaMock {
     
-    public static Venda getInstance() {
-        Venda venda = new Venda();
+    public static ClienteVenda getInstance() {
+        ClienteVenda venda = new ClienteVenda();
         venda.setId(RandomUtils.nextLong(1, 24));
         venda.setFormaPagamentoTipo(FormaPagamentoTipoMock.getRealInstance());
         venda.setDesconto(BigDecimal.valueOf(0));
@@ -23,9 +23,9 @@ public class VendaMock {
         return venda;
     }
 
-    public static VendaInputDTO getInputInstance() {
-        Venda venda = getInstance();
-        VendaInputDTO input = new VendaInputDTO();
+    public static ClienteVendaInputDTO getInputInstance() {
+        ClienteVenda venda = getInstance();
+        ClienteVendaInputDTO input = new ClienteVendaInputDTO();
         input.setFormaPagamentoTipoId(venda.getFormaPagamentoTipo().getId());;
         input.setDesconto(venda.getDesconto());
         input.setAgravo(venda.getAgravo());

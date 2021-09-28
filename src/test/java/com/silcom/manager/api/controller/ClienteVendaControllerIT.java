@@ -7,8 +7,8 @@ import static org.hamcrest.Matchers.hasKey;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.silcom.manager.api.dto.input.VendaInputDTO;
-import com.silcom.manager.domain.model.VendaMock;
+import com.silcom.manager.api.dto.input.ClienteVendaInputDTO;
+import com.silcom.manager.domain.model.ClienteVendaMock;
 
 import org.flywaydb.core.Flyway;
 import org.junit.jupiter.api.BeforeAll;
@@ -24,7 +24,7 @@ import io.restassured.http.ContentType;
 
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
 @TestInstance(Lifecycle.PER_CLASS)
-class VendaControllerIT {
+class ClienteVendaControllerIT {
     
     @LocalServerPort
 	private int port;
@@ -106,7 +106,7 @@ class VendaControllerIT {
 
     @Test
     void shouldReturn201_WhenReceivePOST_withValidInput() {
-        VendaInputDTO input = VendaMock.getInputInstance();
+        ClienteVendaInputDTO input = ClienteVendaMock.getInputInstance();
 
         RestAssured
             .given()
@@ -131,7 +131,7 @@ class VendaControllerIT {
 
     @Test
     void shouldReturn404_WhenReceivePOST_withClienteInvalidInput() {
-        VendaInputDTO input = VendaMock.getInputInstance();
+        ClienteVendaInputDTO input = ClienteVendaMock.getInputInstance();
 
         RestAssured
             .given()
@@ -175,7 +175,7 @@ class VendaControllerIT {
 
     @Test
     void shouldReturn200_whenReceivePUT_withValidInput() {
-        VendaInputDTO input = VendaMock.getInputInstance();
+        ClienteVendaInputDTO input = ClienteVendaMock.getInputInstance();
 
         RestAssured
             .given()
