@@ -176,7 +176,7 @@ insert into tblproduto VALUES
 (92,5,3,14,6,13,'HBG010','E28', 80, now() at time zone 'utc', now() at time zone 'utc'),
 (93,5,5,14,6,13,'HPG010','E29', 80, now() at time zone 'utc', now() at time zone 'utc'),
 (95,10,10,15,16,18,'FFBF00','E30', 40, now() at time zone 'utc', now() at time zone 'utc'),
-(96,10,10,15,16,18,'FFBFFF','EFF', 40.41, now() at time zone 'utc', now() at time zone 'utc');
+(96,10,10,3,16,18,'FFCF00','EFF', 40.41, now() at time zone 'utc', now() at time zone 'utc');
 
 insert into tblcontatotipo values 
 (1, 'Telefone Comercial', now() at time zone 'utc', now() at time zone 'utc'),

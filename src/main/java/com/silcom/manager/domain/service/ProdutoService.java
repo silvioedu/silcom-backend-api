@@ -72,9 +72,9 @@ public class ProdutoService {
 
         Produto produtoRecovered = this.findById(id);
         if ((!produtoRecovered.getCodigo().equals(newProduto.getCodigo()) &&
-            produtoRepository.existsByCodigoIgnoreCase(produto.getCodigo()))) {
+            produtoRepository.existsByCodigoIgnoreCase(newProduto.getCodigo()))) {
                 throw new DuplicateKeyException(
-                    String.format(ALREADY_EXISTS, produto.getCodigo()));   
+                    String.format(ALREADY_EXISTS, newProduto.getCodigo()));   
         }
         newProduto.setId(id);
         newProduto.setDataCriacao(produtoRecovered.getDataCriacao());
