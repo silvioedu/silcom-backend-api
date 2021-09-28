@@ -116,7 +116,7 @@ class ClienteContatoControllerIT {
             .then()
                 .statusCode(HttpStatus.CREATED.value())
                 .body("tipoContatoNome", containsString("Telefone Comercial"))
-                .body("contato", containsString(input.getContato()))
+                .body("contato", containsString("(11) 3311-2233"))
                 .body("$", hasKey("id"))
                 .body("$", hasKey("dataCriacao"))
                 .body("$", hasKey("dataAtualizacao"));
@@ -182,7 +182,7 @@ class ClienteContatoControllerIT {
             .then()
                 .statusCode(HttpStatus.OK.value())
                 .body("tipoContatoNome", containsString("Telefone Comercial"))
-                .body("contato", containsString(input.getContato()))
+                .body("contato", containsString("(11) 3311-2233"))
                 .body("observacoes", containsString(input.getObservacoes()))
                 .body("$", hasKey("id"))
                 .body("$", hasKey("dataCriacao"))

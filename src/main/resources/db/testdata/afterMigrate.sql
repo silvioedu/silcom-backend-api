@@ -1,3 +1,4 @@
+delete from tblvenda;
 delete from tblclientecontato;
 delete from tblclientedocumento;
 delete from tblclienteendereco;
@@ -12,7 +13,6 @@ delete from tblprodutotipo;
 delete from tblcontatotipo;
 delete from tbldocumentotipo;
 delete from tblformapagamentotipo;
-
 
 insert into tblramo values 
 (1,'AÇOUGUE', now() at time zone 'utc', now() at time zone 'utc'),
@@ -230,4 +230,11 @@ insert into tblformapagamentotipo values
 (1, 'À vista', 10, 0, now() at time zone 'utc', now() at time zone 'utc'),
 (2, 'Boleto', 10, 0, now() at time zone 'utc', now() at time zone 'utc'),
 (3, 'Cheque', 0, 15, now() at time zone 'utc', now() at time zone 'utc'),
-(4, 'Cartão de crédito', 0, 8, now() at time zone 'utc', now() at time zone 'utc');
+(4, 'Cartão de crédito', 0, 8, now() at time zone 'utc', now() at time zone 'utc'),
+(5, 'À vista 07 dias', 5, 0, now() at time zone 'utc', now() at time zone 'utc'),
+(6, 'À vista 14 dias', 2, 0, now() at time zone 'utc', now() at time zone 'utc');
+
+insert into tblvenda values
+(1, 1, 1, 0, 0, 100, false, 'Observação venda do cliente 1', now() at time zone 'utc', now() at time zone 'utc'),
+(2, 1, 1, 0, 0, 200, false, 'Observação venda do cliente 1/2', now() at time zone 'utc', now() at time zone 'utc'),
+(3, 1, 1, 0, 0, 200, false, 'Observação venda do cliente 1/3', now() at time zone 'utc', now() at time zone 'utc');

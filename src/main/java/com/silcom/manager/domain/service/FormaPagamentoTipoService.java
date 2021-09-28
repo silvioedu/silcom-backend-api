@@ -6,6 +6,7 @@ import java.util.List;
 import javax.transaction.Transactional;
 
 import com.silcom.manager.domain.exception.DuplicateKeyException;
+import com.silcom.manager.domain.exception.ResourceInUseException;
 import com.silcom.manager.domain.exception.ResourceNotFoundException;
 import com.silcom.manager.domain.model.FormaPagamentoTipo;
 import com.silcom.manager.domain.repository.FormaPagamentoTipoRepository;
@@ -16,12 +17,16 @@ import org.springframework.stereotype.Service;
 @Service
 public class FormaPagamentoTipoService {
     
+    private static final String ID_IN_USE = "Tipo de forma de pagamento id %d em uso";
     private static final String ALREADY_EXISTS = "Tipo de forma de pagamento nome '%s' já existe";
     private static final String NOME_NOT_FOUND = "Não foram encontrados tipos de forma de pagamento com o nome '%s'";
     private static final String ID_NOT_FOUND = "Tipo de forma de pagamento id %d não encontrado";
 
     @Autowired
     private FormaPagamentoTipoRepository formaPagamentoTipoRepository;
+
+    @Autowired
+    private VendaService vendaService;
 
     public List<FormaPagamentoTipo> findAll() {
         return formaPagamentoTipoRepository.findAllByOrderByNomeAsc();
@@ -57,7 +62,10 @@ public class FormaPagamentoTipoService {
 
     @Transactional
     public void delete(final Long id) {
-        // TODO: verificar se tem venda utilizando
+        if (vendaService.existsByFormaPagamentoTipoId(id)) {
+            throw new ResourceInUseException(
+                String.format(ID_IN_USE, id));
+        }
         formaPagamentoTipoRepository.delete(this.findById(id));
     }
 

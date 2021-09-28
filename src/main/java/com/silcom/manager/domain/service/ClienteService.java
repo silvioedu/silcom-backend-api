@@ -35,6 +35,9 @@ public class ClienteService {
     @Autowired
     private ClienteEnderecoService clienteEnderecoService;
 
+    @Autowired
+    private VendaService vendaService;
+
     public List<Cliente> findAll() {
         return clienteRepository.findAllByOrderByRazaoSocialAsc();
     }
@@ -68,9 +71,8 @@ public class ClienteService {
     }
 
     @Transactional
-    public void delete(final Long id) {
-        // TODO: verificar se possui pedidos e impedir
-        
+    public void delete(final Long id) {       
+        vendaService.deleteByClienteId(id);
         clienteContatoService.deleteByClienteId(id);
         clienteDocumentoService.deleteByClienteId(id);
         clienteEnderecoService.deleteByClienteId(id);

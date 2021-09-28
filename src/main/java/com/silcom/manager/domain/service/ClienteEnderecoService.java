@@ -65,6 +65,7 @@ public class ClienteEnderecoService {
         return clienteEndereco;
     }
 
+    @Transactional
     public void deleteByClienteId(Long id) {
         clienteEnderecoRepository.deleteByClienteId(id);
     }

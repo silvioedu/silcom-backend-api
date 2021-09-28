@@ -74,6 +74,7 @@ public class ClienteDocumentoService {
         return clienteDocumento;
     }
 
+    @Transactional
     public void deleteByClienteId(Long id) {
         clienteDocumentoRepository.deleteByClienteId(id);
     }

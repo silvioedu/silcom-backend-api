@@ -73,6 +73,7 @@ public class ClienteContatoService {
         return clienteContato;
     }
 
+    @Transactional
     public void deleteByClienteId(Long id) {
         clienteContatoRepository.deleteByClienteId(id);
     }
