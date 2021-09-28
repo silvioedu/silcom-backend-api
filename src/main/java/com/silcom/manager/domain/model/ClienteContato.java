@@ -1,5 +1,6 @@
 package com.silcom.manager.domain.model;
 
+import java.text.ParseException;
 import java.time.OffsetDateTime;
 
 import javax.persistence.Column;
@@ -9,6 +10,9 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.swing.text.MaskFormatter;
+
+import com.silcom.manager.domain.enums.MaskEnum;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.GenericGenerator;
@@ -47,5 +51,38 @@ public class ClienteContato {
 
     @UpdateTimestamp
     private OffsetDateTime dataAtualizacao;
+
+    public void format(){
+        this.contato = this.contato.replaceAll("[^\\d]", "");
+        try {
+            MaskFormatter mask;
+
+            switch (this.contatoTipo.getId().intValue()) {
+                case 1:
+                    mask = new MaskFormatter(MaskEnum.TELEFONE.getFormat());
+
+                    if (this.contato.length() == MaskEnum.TELEFONE.getDigits()-2) {
+                        this.contato = "11".concat(this.contato);
+                    }
+                    break;
+                case 2:
+                    mask = new MaskFormatter(MaskEnum.TELEFONE_CELULAR.getFormat());
+
+                    if (this.contato.length() == MaskEnum.TELEFONE_CELULAR.getDigits()-2) {
+                        this.contato = "11".concat(this.contato);
+                    }
+                    break;
+                default:
+                    mask = new MaskFormatter();
+            }
+
+            if(this.contato.length() > 0) {
+                mask.setValueContainsLiteralCharacters(false);
+                this.contato = mask.valueToString(this.contato);
+            }
+        } catch (ParseException e) {
+            this.contato = this.contato.replaceAll("[^\\d]", "");
+        }
+    }
 
 }

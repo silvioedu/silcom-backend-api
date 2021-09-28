@@ -8,7 +8,9 @@ public enum MaskEnum {
     CPF(1, "###.###.###-##", 11),
     CNPJ(2, "###.###.###/####-##", 14),
     IE(3,"###.###.###.###", 12),
-    CEP(4, "#####-###", 8);
+    CEP(4, "#####-###", 8),
+    TELEFONE(5, "(##) ####-####", 10),
+    TELEFONE_CELULAR(6, "(##) #####-####", 11);
 
     private int id;
     private String format;

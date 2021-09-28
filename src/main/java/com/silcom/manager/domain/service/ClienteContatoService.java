@@ -46,6 +46,7 @@ public class ClienteContatoService {
     @Transactional
     public ClienteContato insert(final Long clienteId, final ClienteContato clienteContato) {
         ClienteContato clienteContatoFormatado = createclienteContato(clienteContato, clienteId);
+        clienteContatoFormatado.format();
         return clienteContatoRepository.save(clienteContatoFormatado);
     }
 
@@ -58,6 +59,7 @@ public class ClienteContatoService {
     public ClienteContato update(Long clienteId, Long contatoId, ClienteContato clienteContato) {
         ClienteContato clienteContatoRecovered = this.findById(clienteId, contatoId);
  
+        clienteContato.format();
         clienteContato.setId(clienteContatoRecovered.getId());
         clienteContato.setCliente(clienteContatoRecovered.getCliente());
         clienteContato.setContatoTipo(contatoTipoService.findById(clienteContato.getContatoTipo().getId()));
