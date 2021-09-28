@@ -11,6 +11,7 @@ delete from tblprodutofabricante;
 delete from tblprodutotipo;
 delete from tblcontatotipo;
 delete from tbldocumentotipo;
+delete from tblformapagamentotipo;
 
 
 insert into tblramo values 
@@ -224,3 +225,9 @@ insert into tblclienteendereco values
 (3, 3, '53550-610','Rua Cinquenta e Oito','942','','Planalto','Abreu e Lima','PE', 'Endereço 1 cliente 3', now() at time zone 'utc', now() at time zone 'utc'),
 (4, 4, '58434-140','Rua Luzia Gonçalves Pereira','672','','Serrotão','Campina Grande','PB', 'Endereço 1 cliente 4', now() at time zone 'utc', now() at time zone 'utc');
 
+
+insert into tblformapagamentotipo values
+(1, 'À vista', 10, 0, now() at time zone 'utc', now() at time zone 'utc'),
+(2, 'Boleto', 10, 0, now() at time zone 'utc', now() at time zone 'utc'),
+(3, 'Cheque', 0, 15, now() at time zone 'utc', now() at time zone 'utc'),
+(4, 'Cartão de crédito', 0, 8, now() at time zone 'utc', now() at time zone 'utc');
