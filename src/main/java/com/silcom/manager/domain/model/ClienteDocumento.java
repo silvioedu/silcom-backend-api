@@ -1,5 +1,6 @@
 package com.silcom.manager.domain.model;
 
+import java.text.ParseException;
 import java.time.OffsetDateTime;
 
 import javax.persistence.Column;
@@ -9,6 +10,9 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.swing.text.MaskFormatter;
+
+import com.silcom.manager.domain.enums.MaskDocumentoEnum;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.GenericGenerator;
@@ -49,5 +53,40 @@ public class ClienteDocumento {
 
     @UpdateTimestamp
     private OffsetDateTime dataAtualizacao;
+
+    public void formatDocumento(){
+
+        this.documento = this.documento.replaceAll("[^\\d]", "");
+        try {
+            MaskFormatter mask;
+            int digitos = 0;
+
+            switch (this.documentoTipo.getId().intValue()) {
+                case 1:
+                    mask = new MaskFormatter(MaskDocumentoEnum.CPF.getFormat());
+                    digitos = MaskDocumentoEnum.CPF.getDigits();
+                    break;
+                case 2:
+                    mask = new MaskFormatter(MaskDocumentoEnum.CNPJ.getFormat());
+                    digitos = MaskDocumentoEnum.CNPJ.getDigits();
+                    break;
+                case 3:
+                    mask = new MaskFormatter(MaskDocumentoEnum.IE.getFormat());
+                    digitos = MaskDocumentoEnum.IE.getDigits();
+                    break;
+                default:
+                    mask = new MaskFormatter();
+            }
+
+            if(this.documento.length() > 0) {
+                String zeros ="%0"+digitos+"d";
+                this.documento = String.format(zeros, Long.valueOf(this.documento));
+                mask.setValueContainsLiteralCharacters(false);
+                this.documento = mask.valueToString(this.documento);
+            }
+        } catch (ParseException e) {
+            this.documento = this.documento.replaceAll("[^\\d]", "");
+        }
+    }
 
 }

@@ -116,8 +116,8 @@ class ClienteDocumentoControllerIT {
             .then()
                 .statusCode(HttpStatus.CREATED.value())
                 .body("tipoDocumentoNome", containsString("CPF"))
-                .body("documento", containsString(input.getDocumento()))
                 .body("$", hasKey("id"))
+                .body("$", hasKey("documento"))
                 .body("$", hasKey("dataCriacao"))
                 .body("$", hasKey("dataAtualizacao"));
     }
@@ -182,9 +182,9 @@ class ClienteDocumentoControllerIT {
             .then()
                 .statusCode(HttpStatus.OK.value())
                 .body("tipoDocumentoNome", containsString("CPF"))
-                .body("documento", containsString(input.getDocumento()))
                 .body("observacoes", containsString(input.getObservacoes()))
                 .body("$", hasKey("id"))
+                .body("$", hasKey("documento"))
                 .body("$", hasKey("dataCriacao"))
                 .body("$", hasKey("dataAtualizacao"));
     }

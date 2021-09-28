@@ -46,6 +46,8 @@ public class ClienteDocumentoService {
     @Transactional
     public ClienteDocumento insert(final Long clienteId, final ClienteDocumento clienteDocumento) {
         ClienteDocumento clienteDocumentoFormatado = createclienteDocumento(clienteDocumento, clienteId);
+        clienteDocumento.formatDocumento();
+
         return clienteDocumentoRepository.save(clienteDocumentoFormatado);
     }
 
@@ -57,7 +59,8 @@ public class ClienteDocumentoService {
     @Transactional
     public ClienteDocumento update(Long clienteId, Long ddocumentoId, ClienteDocumento clienteDocumento) {
         ClienteDocumento clienteDocumentoRecovered = this.findById(clienteId, ddocumentoId);
- 
+        clienteDocumento.formatDocumento();
+
         clienteDocumento.setId(clienteDocumentoRecovered.getId());
         clienteDocumento.setCliente(clienteDocumentoRecovered.getCliente());
         clienteDocumento.setDocumentoTipo(ddocumentoTipoService.findById(clienteDocumento.getDocumentoTipo().getId()));
