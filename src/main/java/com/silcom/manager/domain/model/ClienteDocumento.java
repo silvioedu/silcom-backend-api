@@ -12,7 +12,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.swing.text.MaskFormatter;
 
-import com.silcom.manager.domain.enums.MaskDocumentoEnum;
+import com.silcom.manager.domain.enums.MaskEnum;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.GenericGenerator;
@@ -54,7 +54,7 @@ public class ClienteDocumento {
     @UpdateTimestamp
     private OffsetDateTime dataAtualizacao;
 
-    public void formatDocumento(){
+    public void format(){
 
         this.documento = this.documento.replaceAll("[^\\d]", "");
         try {
@@ -63,16 +63,16 @@ public class ClienteDocumento {
 
             switch (this.documentoTipo.getId().intValue()) {
                 case 1:
-                    mask = new MaskFormatter(MaskDocumentoEnum.CPF.getFormat());
-                    digitos = MaskDocumentoEnum.CPF.getDigits();
+                    mask = new MaskFormatter(MaskEnum.CPF.getFormat());
+                    digitos = MaskEnum.CPF.getDigits();
                     break;
                 case 2:
-                    mask = new MaskFormatter(MaskDocumentoEnum.CNPJ.getFormat());
-                    digitos = MaskDocumentoEnum.CNPJ.getDigits();
+                    mask = new MaskFormatter(MaskEnum.CNPJ.getFormat());
+                    digitos = MaskEnum.CNPJ.getDigits();
                     break;
                 case 3:
-                    mask = new MaskFormatter(MaskDocumentoEnum.IE.getFormat());
-                    digitos = MaskDocumentoEnum.IE.getDigits();
+                    mask = new MaskFormatter(MaskEnum.IE.getFormat());
+                    digitos = MaskEnum.IE.getDigits();
                     break;
                 default:
                     mask = new MaskFormatter();

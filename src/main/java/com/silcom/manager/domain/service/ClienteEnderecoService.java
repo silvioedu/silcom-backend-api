@@ -39,6 +39,8 @@ public class ClienteEnderecoService {
     @Transactional
     public ClienteEndereco insert(final Long clienteId, final ClienteEndereco clienteEndereco) {
         ClienteEndereco clienteEnderecoFormatado = createclienteEndereco(clienteEndereco, clienteId);
+        clienteEnderecoFormatado.format();
+
         return clienteEnderecoRepository.save(clienteEnderecoFormatado);
     }
 
@@ -50,6 +52,7 @@ public class ClienteEnderecoService {
     @Transactional
     public ClienteEndereco update(Long clienteId, Long contatoId, ClienteEndereco clienteEndereco) {
         ClienteEndereco clienteEnderecoRecovered = this.findById(clienteId, contatoId);
+        clienteEndereco.format();
  
         clienteEndereco.setId(clienteEnderecoRecovered.getId());
         clienteEndereco.setCliente(clienteEnderecoRecovered.getCliente());

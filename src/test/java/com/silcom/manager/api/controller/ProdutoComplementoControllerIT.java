@@ -113,7 +113,7 @@ class ProdutoComplementoControllerIT {
     @Test
     void shouldReturn201_WhenReceivePOST_withValidInput() {
         ProdutoComplementoInputDTO input = ProdutoComplementoMock.getInputInstance();
-        input.setSigla("I");
+        input.setSigla("J");
 
         RestAssured
             .given()

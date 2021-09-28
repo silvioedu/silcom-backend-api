@@ -1,5 +1,6 @@
 package com.silcom.manager.domain.model;
 
+import java.text.ParseException;
 import java.time.OffsetDateTime;
 
 import javax.persistence.Column;
@@ -9,6 +10,9 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.swing.text.MaskFormatter;
+
+import com.silcom.manager.domain.enums.MaskEnum;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.GenericGenerator;
@@ -55,5 +59,25 @@ public class ClienteEndereco {
 
     @UpdateTimestamp
     private OffsetDateTime dataAtualizacao;
+
+    public void format() {
+        this.estado = this.estado.toUpperCase();
+
+        this.cep = this.cep.replaceAll("[^\\d]", "");
+        try {
+            MaskFormatter mask;
+            mask = new MaskFormatter(MaskEnum.CEP.getFormat());
+            int digitos = MaskEnum.CEP.getDigits();
+
+            if(this.cep.length() > 0) {
+                String zeros ="%0"+digitos+"d";
+                this.cep = String.format(zeros, Long.valueOf(this.cep));
+                mask.setValueContainsLiteralCharacters(false);
+                this.cep = mask.valueToString(this.cep);
+            }
+        } catch (ParseException e) {
+            this.cep = this.cep.replaceAll("[^\\d]", "");
+        }
+    }
 
 }
