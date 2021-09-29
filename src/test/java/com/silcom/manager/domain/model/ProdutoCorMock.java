@@ -28,9 +28,9 @@ public class ProdutoCorMock {
 
     public static ProdutoCor getRealInstance() {
         ProdutoCor produtoCor = new ProdutoCor();
-        produtoCor.setId(6L);
-        produtoCor.setNome("Rosa");
-        produtoCor.setSigla("R");
+        produtoCor.setId(5L);
+        produtoCor.setNome("Preto");
+        produtoCor.setSigla("P");
         return produtoCor;
     }
 

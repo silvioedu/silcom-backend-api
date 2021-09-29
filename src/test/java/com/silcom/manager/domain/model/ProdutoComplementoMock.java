@@ -29,9 +29,9 @@ public class ProdutoComplementoMock {
 
     public static ProdutoComplemento getRealInstance() {
         ProdutoComplemento produtoComplemento = new ProdutoComplemento();
-        produtoComplemento.setId(6L);
-        produtoComplemento.setNome("Monodensidade Sem bico");
-        produtoComplemento.setSigla("0");
+        produtoComplemento.setId(8L);
+        produtoComplemento.setNome("Monodensidade Bico PVC");
+        produtoComplemento.setSigla("1");
         return produtoComplemento;
     }
 

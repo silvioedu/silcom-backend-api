@@ -195,20 +195,6 @@ class ClienteControllerIT {
                 .statusCode(HttpStatus.NO_CONTENT.value());
     }
 
-    // TODO: teste de concorrencia com vendas
-    // @Test
-    // void shouldReturn409_WhenReceiveDELETE_withInUseInput() {
-    //     RestAssured
-    //         .given()
-    //             .pathParam("id", 1)
-	// 			.contentType(ContentType.JSON)
-    //             .accept(ContentType.JSON)
-    //         .when()
-    //             .delete("/{id}")
-    //         .then()
-    //             .statusCode(HttpStatus.CONFLICT.value());
-    // }
-
     @Test
     void shouldReturn200_whenReceivePUT_withValidInput() {
         ClienteInputDTO input = ClienteMock.getInputInstance();

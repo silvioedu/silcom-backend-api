@@ -41,4 +41,21 @@ public class ProdutoMock {
         return input;
     }
 
+    public static Produto getRealInstance() {
+        Produto produto = Produto.builder()
+            .id(6L)
+            .complemento(ProdutoComplementoMock.getRealInstance())
+            .cor(ProdutoCorMock.getRealInstance())
+            .detalhe(ProdutoDetalheMock.getRealInstance())
+            .fabricante(ProdutoFabricanteMock.getRealInstance())
+            .tipo(ProdutoTipoMock.getRealInstance())
+            .dataCriacao(OffsetDateTime.now())
+            .dataAtualizacao(OffsetDateTime.now())
+            .codigo("SPE102")
+            .folder("")
+            .preco(BigDecimal.valueOf(58))
+            .build();
+        return produto;
+    }
+
 }

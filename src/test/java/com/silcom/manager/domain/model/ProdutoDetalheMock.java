@@ -28,9 +28,9 @@ public class ProdutoDetalheMock {
 
     public static ProdutoDetalhe getRealInstance() {
         ProdutoDetalhe produtoDetalhe = new ProdutoDetalhe();
-        produtoDetalhe.setId(1L);
-        produtoDetalhe.setNome("Cadarço");
-        produtoDetalhe.setSigla("A");
+        produtoDetalhe.setId(2L);
+        produtoDetalhe.setNome("Elástico");
+        produtoDetalhe.setSigla("E");
         return produtoDetalhe;
     }
 

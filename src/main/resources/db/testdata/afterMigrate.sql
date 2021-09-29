@@ -1,3 +1,4 @@
+delete from tblclientevendaitem;
 delete from tblclientevenda;
 delete from tblclientecontato;
 delete from tblclientedocumento;
@@ -237,4 +238,22 @@ insert into tblformapagamentotipo values
 insert into tblclientevenda values
 (1, 1, 1, 0, 0, 100, false, 'Observação venda do cliente 1', now() at time zone 'utc', now() at time zone 'utc'),
 (2, 1, 1, 0, 0, 200, false, 'Observação venda do cliente 1/2', now() at time zone 'utc', now() at time zone 'utc'),
-(3, 1, 1, 0, 0, 200, false, 'Observação venda do cliente 1/3', now() at time zone 'utc', now() at time zone 'utc');
+(3, 1, 1, 0, 0, 200, false, 'Observação venda do cliente 1/3', now() at time zone 'utc', now() at time zone 'utc'),
+(4, 2, 1, 0, 0, 200, false, 'Observação venda do cliente 2/1', now() at time zone 'utc', now() at time zone 'utc'),
+(5, 3, 1, 0, 0, 200, false, 'Observação venda do cliente 3/1', now() at time zone 'utc', now() at time zone 'utc'),
+(6, 3, 1, 0, 0, 200, false, 'Observação venda do cliente 3/1', now() at time zone 'utc', now() at time zone 'utc');
+
+insert into tblclientevendaitem values
+(1, 1, 6, 1, 20.00, now() at time zone 'utc', now() at time zone 'utc'),
+(2, 1, 7, 1, 39.50, now() at time zone 'utc', now() at time zone 'utc'),
+(3, 1, 8, 2, 60.00, now() at time zone 'utc', now() at time zone 'utc'),
+(4, 2, 10, 5, 27.20, now() at time zone 'utc', now() at time zone 'utc'),
+(5, 2, 11, 2, 35.00, now() at time zone 'utc', now() at time zone 'utc'),
+(6, 3, 12, 1, 90.90, now() at time zone 'utc', now() at time zone 'utc'),
+(7, 3, 13, 3, 28.30, now() at time zone 'utc', now() at time zone 'utc'),
+(8, 4, 14, 3, 90.90, now() at time zone 'utc', now() at time zone 'utc'),
+(9, 4, 6, 3, 28.30, now() at time zone 'utc', now() at time zone 'utc'),
+(10, 5, 7, 3, 28.30, now() at time zone 'utc', now() at time zone 'utc'),
+(11, 5, 8, 3, 28.30, now() at time zone 'utc', now() at time zone 'utc'),
+(12, 5, 9, 3, 28.30, now() at time zone 'utc', now() at time zone 'utc'),
+(13, 6, 10, 3, 28.30, now() at time zone 'utc', now() at time zone 'utc');

@@ -93,6 +93,11 @@ class ProdutoControllerIT {
     @Test
     void shouldReturn201_WhenReceivePOST_withValidInput() {
         ProdutoInputDTO input = ProdutoMock.getInputInstance();
+        input.setComplementoId(6L);
+        input.setCorId(6L);
+        input.setDetalheId(1L);
+        input.setFabricanteId(1L);
+        input.setTipoId(1L);
 
         RestAssured
             .given()
@@ -107,6 +112,7 @@ class ProdutoControllerIT {
                 .body("corNome", containsString("Rosa"))
                 .body("complementoNome", containsString("Monodensidade Sem bico"))
                 .body("fabricanteNome", containsString("Susa"))
+                .body("detalheNome", containsString("Cadarço"))
                 .body("codigo", containsString("BRA002"))
                 .body("$", hasKey("id"))
                 .body("$", hasKey("folder"))

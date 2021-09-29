@@ -23,6 +23,9 @@ public class ClienteVendaService {
     private ClienteService clienteService;
 
     @Autowired
+    private ClienteVendaItemService clienteVendaItemService;
+
+    @Autowired
     private FormaPagamentoTipoService formaPagamentoTipoService;
 
     public boolean existsByFormaPagamentoTipoId(Long formaPagamentoTipoId) {
@@ -51,6 +54,7 @@ public class ClienteVendaService {
 
     @Transactional
     public void delete(final Long clienteId, final Long id) {
+        clienteVendaItemService.deleteByClienteVendaId(id);
         vendaRepository.delete(this.findById(clienteId, id));
     }
 
@@ -73,6 +77,10 @@ public class ClienteVendaService {
 
     @Transactional
     public void deleteByClienteId(Long id) {
+
+        this.findAll(id).stream()
+            .forEach(item -> clienteVendaItemService.deleteByClienteVendaId(item.getId()));
+        
         vendaRepository.deleteByClienteId(id);
     }
 

@@ -28,9 +28,9 @@ public class ProdutoTipoMock {
 
     public static ProdutoTipo getRealInstance() {
         ProdutoTipo produtoTipo = new ProdutoTipo();
-        produtoTipo.setId(1L);
-        produtoTipo.setNome("Bota");
-        produtoTipo.setSigla("B");
+        produtoTipo.setId(2L);
+        produtoTipo.setNome("Sapato");
+        produtoTipo.setSigla("S");
         return produtoTipo;
     }
 
