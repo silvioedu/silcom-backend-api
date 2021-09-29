@@ -1,4 +1,4 @@
-delete from tblvenda;
+delete from tblclientevenda;
 delete from tblclientecontato;
 delete from tblclientedocumento;
 delete from tblclienteendereco;
@@ -234,7 +234,7 @@ insert into tblformapagamentotipo values
 (5, 'À vista 07 dias', 5, 0, now() at time zone 'utc', now() at time zone 'utc'),
 (6, 'À vista 14 dias', 2, 0, now() at time zone 'utc', now() at time zone 'utc');
 
-insert into tblvenda values
+insert into tblclientevenda values
 (1, 1, 1, 0, 0, 100, false, 'Observação venda do cliente 1', now() at time zone 'utc', now() at time zone 'utc'),
 (2, 1, 1, 0, 0, 200, false, 'Observação venda do cliente 1/2', now() at time zone 'utc', now() at time zone 'utc'),
 (3, 1, 1, 0, 0, 200, false, 'Observação venda do cliente 1/3', now() at time zone 'utc', now() at time zone 'utc');

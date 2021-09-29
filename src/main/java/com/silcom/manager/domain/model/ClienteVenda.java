@@ -23,7 +23,7 @@ import lombok.EqualsAndHashCode;
 @Builder
 @Data
 @Entity
-@Table(name = "tblvenda")
+@Table(name = "tblclientevenda")
 public class ClienteVenda {
 
     @EqualsAndHashCode.Include
