@@ -45,7 +45,7 @@ class ClienteVendaOutputAssemblerTest {
 
     private void assertValues(ClienteVenda origin, ClienteVendaOutputDTO destination) {
         assertEquals(origin.getId(), destination.getId());
-        assertEquals(origin.getFormaPagamentoTipo().getId(), destination.getFormaPagamentoTipoId());
+        assertEquals(origin.getFormaPagamentoTipo().getNome(), destination.getFormaPagamentoTipoNome());
         assertEquals(origin.getDesconto(), destination.getDesconto());
         assertEquals(origin.getAgravo(), destination.getAgravo());
         assertEquals(origin.getValorTotal(), destination.getValorTotal());

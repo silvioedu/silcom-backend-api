@@ -11,7 +11,7 @@ import lombok.Setter;
 public class ClienteVendaOutputDTO {
     
     private Long id;
-    private Long formaPagamentoTipoId;
+    private String formaPagamentoTipoNome;
     private BigDecimal desconto;
     private BigDecimal agravo;
     private BigDecimal valorTotal;
