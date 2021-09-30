@@ -16,5 +16,6 @@ public interface ClienteRepository extends PagingAndSortingRepository<Cliente, L
 
     List<Cliente> findByRazaoSocialContainingIgnoreCase(String razaoSocial);
     boolean existsByRazaoSocialIgnoreCase(String razaoSocial);
+    boolean existsByRamoId(Long ramoId);
 
 }

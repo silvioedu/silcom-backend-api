@@ -6,6 +6,7 @@ import java.util.List;
 import javax.transaction.Transactional;
 
 import com.silcom.manager.domain.exception.DuplicateKeyException;
+import com.silcom.manager.domain.exception.ResourceInUseException;
 import com.silcom.manager.domain.exception.ResourceNotFoundException;
 import com.silcom.manager.domain.model.Ramo;
 import com.silcom.manager.domain.repository.RamoRepository;
@@ -16,12 +17,16 @@ import org.springframework.stereotype.Service;
 @Service
 public class RamoService {
     
+    private static final String ID_IN_USE = "Ramo id %d em uso";
     private static final String ALREADY_EXISTS = "Ramo nome '%s' já existe";
     private static final String NOME_NOT_FOUND = "Não foram encontrados ramos com o nome '%s'";
     private static final String ID_NOT_FOUND = "Ramo id %d não encontrado";
 
     @Autowired
     private RamoRepository ramoRepository;
+
+    @Autowired
+    private ClienteService clienteService;
 
     public List<Ramo> findAll() {
         return ramoRepository.findAllByOrderByNomeAsc();
@@ -58,6 +63,11 @@ public class RamoService {
 
     @Transactional
     public void delete(final Long id) {
+        if (clienteService.existsByRamoId(id)) {
+            throw new ResourceInUseException(
+                String.format(ID_IN_USE, id));
+        }
+
         ramoRepository.delete(this.findById(id));
     }
 

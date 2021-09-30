@@ -101,4 +101,8 @@ public class ClienteService {
         return cliente;
     }
 
+    public boolean existsByRamoId(Long ramoId) {
+        return clienteRepository.existsByRamoId(ramoId);
+    }
+
 }

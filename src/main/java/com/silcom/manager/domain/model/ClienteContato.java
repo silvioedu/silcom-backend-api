@@ -54,32 +54,34 @@ public class ClienteContato {
     private OffsetDateTime dataAtualizacao;
 
     public void format(){
-        this.contato = this.contato.replaceAll("[^\\d]", "");
         try {
             MaskFormatter mask;
 
             switch (this.contatoTipo.getId().intValue()) {
                 case 1:
                     mask = new MaskFormatter(MaskEnum.TELEFONE.getFormat());
+                    this.contato = this.contato.replaceAll("[^\\d]", "");
 
                     if (this.contato.length() == MaskEnum.TELEFONE.getDigits()-2) {
                         this.contato = "11".concat(this.contato);
                     }
+                    if(this.contato.length() > 0) {
+                        mask.setValueContainsLiteralCharacters(false);
+                        this.contato = mask.valueToString(this.contato);
+                    }
                     break;
                 case 2:
                     mask = new MaskFormatter(MaskEnum.TELEFONE_CELULAR.getFormat());
+                    this.contato = this.contato.replaceAll("[^\\d]", "");
 
                     if (this.contato.length() == MaskEnum.TELEFONE_CELULAR.getDigits()-2) {
                         this.contato = "11".concat(this.contato);
                     }
+                    if(this.contato.length() > 0) {
+                        mask.setValueContainsLiteralCharacters(false);
+                        this.contato = mask.valueToString(this.contato);
+                    }
                     break;
-                default:
-                    mask = new MaskFormatter();
-            }
-
-            if(this.contato.length() > 0) {
-                mask.setValueContainsLiteralCharacters(false);
-                this.contato = mask.valueToString(this.contato);
             }
         } catch (ParseException e) {
             this.contato = this.contato.replaceAll("[^\\d]", "");

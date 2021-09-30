@@ -60,7 +60,6 @@ public class ProdutoController {
     @ResponseStatus(HttpStatus.CREATED)
     public ProdutoOutputDTO insert(@RequestBody @Valid ProdutoInputDTO produtoInputDTO) {
         Produto produto = produtoInputAssembler.toModel(produtoInputDTO);
-        System.out.println(produtoInputDTO);
         return produtoOutputAssembler.toDTO(produtoService.insert(produto));
     }
 
