@@ -11,6 +11,7 @@ public class ClienteEnderecoMock {
     public static ClienteEndereco getInstance() {
         ClienteEndereco clienteEndereco = new ClienteEndereco();
         clienteEndereco.setId(RandomUtils.nextLong(1, 24));
+        clienteEndereco.setEnderecoTipo(EnderecoTipoMock.getRealInstance());
         clienteEndereco.setCep("89095-392");
         clienteEndereco.setLogradouro("Rua Frederico Bauer");
         clienteEndereco.setNumero("859");
@@ -27,6 +28,7 @@ public class ClienteEnderecoMock {
     public static ClienteEnderecoInputDTO getInputInstance() {
         ClienteEndereco clienteEndereco = getInstance();
         ClienteEnderecoInputDTO input = new ClienteEnderecoInputDTO();
+        input.setEnderecoTipoId(clienteEndereco.getEnderecoTipo().getId());
         input.setCep(clienteEndereco.getCep());
         input.setLogradouro(clienteEndereco.getLogradouro());
         input.setNumero(clienteEndereco.getNumero());

@@ -13,6 +13,7 @@ delete from tblprodutofabricante;
 delete from tblprodutotipo;
 delete from tblcontatotipo;
 delete from tbldocumentotipo;
+delete from tblenderecotipo;
 delete from tblformapagamentotipo;
 
 insert into tblramo values 
@@ -196,12 +197,17 @@ insert into tbldocumentotipo values
 (5, 'Apenas para Tst IT2', now() at time zone 'utc', now() at time zone 'utc'),
 (6, 'Apenas para Tst IT3', now() at time zone 'utc', now() at time zone 'utc');
 
+insert into tblenderecotipo values 
+(1, 'Comercial', now() at time zone 'utc', now() at time zone 'utc'),
+(2, 'Entrega', now() at time zone 'utc', now() at time zone 'utc'),
+(3, 'Apenas para Tst IT', now() at time zone 'utc', now() at time zone 'utc'),
+(4, 'Apenas para Tst IT2', now() at time zone 'utc', now() at time zone 'utc');
+
 insert into tblcliente values 
 (1, 'Cliente número 1', 'Clientão', 1, 'J', 'Observação 1', now() at time zone 'utc', now() at time zone 'utc'),
 (2, 'Cliente número 2', 'Clientinho', 2, 'J', 'Observação 2', now() at time zone 'utc', now() at time zone 'utc'),
 (3, 'Cliente número 3', 'Clientelho', 3, 'F', 'Observação 3', now() at time zone 'utc', now() at time zone 'utc'),
 (4, 'Cliente número 4', 'Clientasso', 4, 'F', 'Observação 4', now() at time zone 'utc', now() at time zone 'utc');
-
 
 insert into tblclientecontato values 
 (1, 1, 1, '3366-3366', 'Residencial cliente 1', now() at time zone 'utc', now() at time zone 'utc'),
@@ -219,13 +225,11 @@ insert into tblclientedocumento values
 (5, 2, 3, '', true, 'IE cliente 2', now() at time zone 'utc', now() at time zone 'utc'),
 (6, 1, 1, '6565757-12', false, 'CPF cliente 1', now() at time zone 'utc', now() at time zone 'utc');
 
-
 insert into tblclienteendereco values
-(1, 1, '58051-590','Rua Rosa Lima dos Santos','197','Lala','Jardim Cidade Universitária','João Pessoa','PB', 'Endereço 1 cliente 1', now() at time zone 'utc', now() at time zone 'utc'),
-(2, 2, '73020-555','Setor DNOCS Quadra 11','345','','Sobradinho','Brasília','DF', 'Endereço 1 cliente 2', now() at time zone 'utc', now() at time zone 'utc'),
-(3, 3, '53550-610','Rua Cinquenta e Oito','942','','Planalto','Abreu e Lima','PE', 'Endereço 1 cliente 3', now() at time zone 'utc', now() at time zone 'utc'),
-(4, 4, '58434-140','Rua Luzia Gonçalves Pereira','672','','Serrotão','Campina Grande','PB', 'Endereço 1 cliente 4', now() at time zone 'utc', now() at time zone 'utc');
-
+(1, 1, 1, '58051-590','Rua Rosa Lima dos Santos','197','Lala','Jardim Cidade Universitária','João Pessoa','PB', 'Endereço 1 cliente 1', now() at time zone 'utc', now() at time zone 'utc'),
+(2, 2, 1, '73020-555','Setor DNOCS Quadra 11','345','','Sobradinho','Brasília','DF', 'Endereço 1 cliente 2', now() at time zone 'utc', now() at time zone 'utc'),
+(3, 3, 2, '53550-610','Rua Cinquenta e Oito','942','','Planalto','Abreu e Lima','PE', 'Endereço 1 cliente 3', now() at time zone 'utc', now() at time zone 'utc'),
+(4, 4, 2, '58434-140','Rua Luzia Gonçalves Pereira','672','','Serrotão','Campina Grande','PB', 'Endereço 1 cliente 4', now() at time zone 'utc', now() at time zone 'utc');
 
 insert into tblformapagamentotipo values
 (1, 'À vista', 10, 0, now() at time zone 'utc', now() at time zone 'utc'),

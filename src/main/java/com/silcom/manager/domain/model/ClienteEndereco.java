@@ -38,6 +38,10 @@ public class ClienteEndereco {
     @JoinColumn(name = "id_cliente")    
     private Cliente cliente;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_endereco_tipo")    
+    private EnderecoTipo enderecoTipo;
+
     private String cep;
 
     private String logradouro;

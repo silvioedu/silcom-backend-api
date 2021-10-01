@@ -75,4 +75,7 @@ public class ClienteVendaItemService {
         vendaItemRepository.deleteByClienteVendaId(id);
     }
 
+    public boolean existsByProdutoId(Long produtoId) {
+        return vendaItemRepository.existsByProdutoId(produtoId);
+    }
 }

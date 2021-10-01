@@ -1,6 +1,8 @@
 package com.silcom.manager.api.dto.input;
 
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Positive;
 import javax.validation.constraints.Size;
 
 import lombok.Getter;
@@ -10,6 +12,10 @@ import lombok.Setter;
 @Setter
 public class ClienteEnderecoInputDTO {
     
+    @NotNull
+    @Positive
+    private Long enderecoTipoId;
+
     @NotBlank
     @Size(max=9)
     private String cep;

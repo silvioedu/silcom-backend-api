@@ -12,5 +12,7 @@ public interface ClienteVendaItemRepository extends PagingAndSortingRepository<C
  
     List<ClienteVendaItem> findAllByClienteVendaIdOrderByDataCriacaoAsc(Long clienteVendaId);
 
+    boolean existsByProdutoId(Long produtoId);
+    
     void deleteByClienteVendaId(Long clienteVendaId);
 }

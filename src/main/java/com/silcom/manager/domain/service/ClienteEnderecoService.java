@@ -22,6 +22,10 @@ public class ClienteEnderecoService {
     @Autowired
     private ClienteService clienteService;
 
+    public boolean existsByEnderecoTipoId(Long enderecoTipoId) {
+        return clienteEnderecoRepository.existsByEnderecoTipoId(enderecoTipoId);
+    }
+
     public List<ClienteEndereco> findAll(final Long clienteId) {
         clienteService.findById(clienteId);
         return clienteEnderecoRepository.findAllByClienteId(clienteId);

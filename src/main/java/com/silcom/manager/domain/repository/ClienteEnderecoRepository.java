@@ -12,5 +12,7 @@ public interface ClienteEnderecoRepository extends PagingAndSortingRepository<Cl
  
     List<ClienteEndereco> findAllByClienteId(Long clienteId);
 
+    boolean existsByEnderecoTipoId(Long enderecoTipoId);
+
     void deleteByClienteId(Long clienteId);
 }

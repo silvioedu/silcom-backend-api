@@ -6,6 +6,7 @@ import java.util.List;
 import javax.transaction.Transactional;
 
 import com.silcom.manager.domain.exception.DuplicateKeyException;
+import com.silcom.manager.domain.exception.ResourceInUseException;
 import com.silcom.manager.domain.exception.ResourceNotFoundException;
 import com.silcom.manager.domain.model.Produto;
 import com.silcom.manager.domain.repository.ProdutoRepository;
@@ -16,6 +17,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class ProdutoService {
     
+    private static final String ID_IN_USE = "Produto id %d em uso";
     private static final String ALREADY_EXISTS = "Produto código '%s' já existe";
     private static final String ID_NOT_FOUND = "Produto id %d não encontrado";
 
@@ -36,6 +38,9 @@ public class ProdutoService {
 
     @Autowired
     private ProdutoFabricanteService produtoFabricanteService;
+
+    @Autowired
+    private ClienteVendaItemService clienteVendaItemService;
 
     public List<Produto> findAll() {
         return produtoRepository.findAllByOrderByIdAsc();
@@ -62,6 +67,11 @@ public class ProdutoService {
 
     @Transactional
     public void delete(final Long id) {
+        if (clienteVendaItemService.existsByProdutoId(id)) {
+            throw new ResourceInUseException(
+                String.format(ID_IN_USE, id));
+        }
+
         produtoRepository.delete(this.findById(id));
     }
 

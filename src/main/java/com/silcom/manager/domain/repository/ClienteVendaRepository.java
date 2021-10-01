@@ -13,6 +13,6 @@ public interface ClienteVendaRepository extends PagingAndSortingRepository<Clien
     List<ClienteVenda> findAllByClienteIdOrderByDataCriacaoAsc(Long clienteId);
 
     boolean existsByFormaPagamentoTipoId(Long formaPagamentoTipo);
-
+    
     void deleteByClienteId(Long clienteId);
 }
