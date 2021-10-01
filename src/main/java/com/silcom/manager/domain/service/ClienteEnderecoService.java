@@ -1,5 +1,6 @@
 package com.silcom.manager.domain.service;
 
+import java.time.OffsetDateTime;
 import java.util.List;
 
 import javax.transaction.Transactional;
@@ -21,6 +22,9 @@ public class ClienteEnderecoService {
 
     @Autowired
     private ClienteService clienteService;
+
+    @Autowired
+    private EnderecoTipoService enderecoTipoService;
 
     public boolean existsByEnderecoTipoId(Long enderecoTipoId) {
         return clienteEnderecoRepository.existsByEnderecoTipoId(enderecoTipoId);
@@ -65,7 +69,9 @@ public class ClienteEnderecoService {
     }
 
     private ClienteEndereco createclienteEndereco(ClienteEndereco clienteEndereco, Long clienteId) {
+        clienteEndereco.setEnderecoTipo(enderecoTipoService.findById(clienteEndereco.getEnderecoTipo().getId()));
         clienteEndereco.setCliente(clienteService.findById(clienteId));
+        clienteEndereco.setDataCriacao(OffsetDateTime.now());
         return clienteEndereco;
     }
 

@@ -28,7 +28,7 @@ public class ClienteEnderecoMock {
     public static ClienteEnderecoInputDTO getInputInstance() {
         ClienteEndereco clienteEndereco = getInstance();
         ClienteEnderecoInputDTO input = new ClienteEnderecoInputDTO();
-        input.setEnderecoTipoId(clienteEndereco.getEnderecoTipo().getId());
+        input.setTipoEnderecoId(clienteEndereco.getEnderecoTipo().getId());
         input.setCep(clienteEndereco.getCep());
         input.setLogradouro(clienteEndereco.getLogradouro());
         input.setNumero(clienteEndereco.getNumero());

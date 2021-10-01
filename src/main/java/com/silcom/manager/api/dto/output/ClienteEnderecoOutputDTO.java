@@ -9,7 +9,7 @@ import lombok.Setter;
 @Setter
 public class ClienteEnderecoOutputDTO {
     
-    private String enderecoTipoNome;
+    private String tipoEnderecoNome;
     private Long id;
     private String cep;
     private String logradouro;

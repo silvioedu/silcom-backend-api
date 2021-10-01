@@ -14,7 +14,7 @@ public class ClienteEnderecoInputDTO {
     
     @NotNull
     @Positive
-    private Long enderecoTipoId;
+    private Long tipoEnderecoId;
 
     @NotBlank
     @Size(max=9)
