@@ -66,7 +66,11 @@ public class ClienteVendaItemService {
         createVendaItem(clienteId, clienteVendaId, vendaItem);
         vendaItem.setId(vendaItemRecovered.getId());
         vendaItem.setDataCriacao(vendaItemRecovered.getDataCriacao());
-        return vendaItemRepository.save(vendaItem);
+        ClienteVendaItem vendaSaved = vendaItemRepository.save(vendaItem);
+
+        clienteVendaService.updateValorTotal(clienteVendaId);
+
+        return vendaSaved;
     }
 
     private ClienteVendaItem createVendaItem(final Long clienteId, final Long clienteVendaId, final ClienteVendaItem vendaItem) {

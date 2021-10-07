@@ -7,7 +7,6 @@ import javax.transaction.Transactional;
 
 import com.silcom.manager.domain.exception.ResourceNotFoundException;
 import com.silcom.manager.domain.model.ClienteVenda;
-import com.silcom.manager.domain.model.ClienteVendaItem;
 import com.silcom.manager.domain.repository.ClienteVendaRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
