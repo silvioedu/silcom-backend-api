@@ -1,11 +1,13 @@
 package com.silcom.manager.domain.service;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import javax.transaction.Transactional;
 
 import com.silcom.manager.domain.exception.ResourceNotFoundException;
 import com.silcom.manager.domain.model.ClienteVenda;
+import com.silcom.manager.domain.model.ClienteVendaItem;
 import com.silcom.manager.domain.repository.ClienteVendaRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,6 +37,13 @@ public class ClienteVendaService {
     public List<ClienteVenda> findAll(final Long clienteId) {
         clienteService.findById(clienteId);
         return vendaRepository.findAllByClienteIdOrderByDataCriacaoAsc(clienteId);
+    }
+
+    private ClienteVenda findByVendaId(final Long id) {
+        return vendaRepository.findById(id)
+            .orElseThrow(() -> new ResourceNotFoundException(
+                String.format(ID_NOT_FOUND, id, 0)
+            ));
     }
 
     public ClienteVenda findById(final Long clienteId, final Long id) {
@@ -82,6 +91,18 @@ public class ClienteVendaService {
             .forEach(item -> clienteVendaItemService.deleteByClienteVendaId(item.getId()));
         
         vendaRepository.deleteByClienteId(id);
+    }
+
+    @Transactional
+    public void updateValorTotal(Long clienteVendaId) {
+        ClienteVenda venda = this.findByVendaId(clienteVendaId);
+
+        BigDecimal total = this.clienteVendaItemService.findAllByVenda(clienteVendaId).stream()
+            .map(item -> item.getValorUnitario().multiply(BigDecimal.valueOf(item.getQuantidade())))
+            .reduce(BigDecimal.ZERO, BigDecimal::add);
+
+        venda.setValorTotal(total);
+        this.update(venda.getCliente().getId(), clienteVendaId, venda);
     }
 
 }

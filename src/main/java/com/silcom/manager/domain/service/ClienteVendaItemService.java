@@ -1,5 +1,6 @@
 package com.silcom.manager.domain.service;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import javax.transaction.Transactional;
@@ -46,12 +47,16 @@ public class ClienteVendaItemService {
     @Transactional
     public ClienteVendaItem insert(final Long clienteId, final Long clienteVendaId, final ClienteVendaItem vendaItem) {
         ClienteVendaItem vendaItemFormatado = createVendaItem(clienteId, clienteVendaId, vendaItem);
-        return vendaItemRepository.save(vendaItemFormatado);
+        ClienteVendaItem vendaSaved = vendaItemRepository.save(vendaItemFormatado);
+        
+        clienteVendaService.updateValorTotal(clienteVendaId);
+        return vendaSaved;
     }
 
     @Transactional
     public void delete(final Long clienteId, final Long clienteVendaId, final Long id) {
         vendaItemRepository.delete(this.findById(clienteId, clienteVendaId, id));
+        clienteVendaService.updateValorTotal(clienteVendaId);
     }
 
     @Transactional
@@ -67,6 +72,10 @@ public class ClienteVendaItemService {
     private ClienteVendaItem createVendaItem(final Long clienteId, final Long clienteVendaId, final ClienteVendaItem vendaItem) {
         vendaItem.setClienteVenda(clienteVendaService.findById(clienteId, clienteVendaId));
         vendaItem.setProduto(produtoService.findById(vendaItem.getProduto().getId()));
+
+        if (vendaItem.getValorUnitario().equals(BigDecimal.ZERO)) {
+            vendaItem.setValorUnitario(vendaItem.getProduto().getPreco());
+        }
         return vendaItem;
     }
 
