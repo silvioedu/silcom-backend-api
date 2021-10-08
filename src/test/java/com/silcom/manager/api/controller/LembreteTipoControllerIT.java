@@ -178,7 +178,7 @@ class LembreteTipoControllerIT {
     void shouldReturn404_WhenReceiveDELETE_withFoundId() {
         RestAssured
             .given()
-                .pathParam("id", 2)
+                .pathParam("id", 5)
                 .contentType(ContentType.JSON)
                 .accept(ContentType.JSON)
             .when()

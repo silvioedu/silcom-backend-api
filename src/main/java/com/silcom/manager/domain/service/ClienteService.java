@@ -36,6 +36,9 @@ public class ClienteService {
     private ClienteEnderecoService clienteEnderecoService;
 
     @Autowired
+    private ClienteLembreteService clienteLembreteService;
+
+    @Autowired
     private ClienteVendaService vendaService;
 
     public List<Cliente> findAll() {
@@ -76,6 +79,7 @@ public class ClienteService {
         clienteContatoService.deleteByClienteId(id);
         clienteDocumentoService.deleteByClienteId(id);
         clienteEnderecoService.deleteByClienteId(id);
+        clienteLembreteService.deleteByClienteId(id);
         clienteRepository.delete(this.findById(id));
     }
 

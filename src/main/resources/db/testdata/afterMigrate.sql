@@ -3,6 +3,7 @@ delete from tblclientevenda;
 delete from tblclientecontato;
 delete from tblclientedocumento;
 delete from tblclienteendereco;
+delete from tblclientelembrete;
 delete from tblcliente;
 delete from tblramo;
 delete from tblproduto;
@@ -267,4 +268,13 @@ insert into tbllembretetipo values
 (1, 'Próximo contato', 7, now() at time zone 'utc', now() at time zone 'utc'),
 (2, 'Orçamento', 2, now() at time zone 'utc', now() at time zone 'utc'),
 (3, 'Venda', 15, now() at time zone 'utc', now() at time zone 'utc'),
-(4, 'Folder', 3, now() at time zone 'utc', now() at time zone 'utc');
+(4, 'Folder', 3, now() at time zone 'utc', now() at time zone 'utc'),
+(5, 'Lembrete IT', 5, now() at time zone 'utc', now() at time zone 'utc');
+
+insert into tblclientelembrete values
+(1, 1, 1, '2021-10-01', 'Lembrete 1 do cliente 1', now() at time zone 'utc', now() at time zone 'utc'),
+(2, 1, 2, '2021-10-02', 'Lembrete 2 do cliente 1', now() at time zone 'utc', now() at time zone 'utc'),
+(3, 2, 1, '2021-10-03', 'Lembrete 1 do cliente 2', now() at time zone 'utc', now() at time zone 'utc'),
+(4, 2, 3, '2021-10-04', 'Lembrete 2 do cliente 2', now() at time zone 'utc', now() at time zone 'utc'),
+(5, 3, 1, '2021-10-05', 'Lembrete 1 do cliente 3', now() at time zone 'utc', now() at time zone 'utc'),
+(6, 3, 1, '2021-10-06', 'Lembrete 2 do cliente 3', now() at time zone 'utc', now() at time zone 'utc');
