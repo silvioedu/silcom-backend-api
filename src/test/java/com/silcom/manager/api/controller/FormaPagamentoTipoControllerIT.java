@@ -36,7 +36,7 @@ class FormaPagamentoTipoControllerIT {
 	void setUp() {
 		RestAssured.enableLoggingOfRequestAndResponseIfValidationFails();
 		RestAssured.port = port;
-		RestAssured.basePath = "/cadastros/formas-pagamentos";
+		RestAssured.basePath = "/cadastros/formas-pagamentos-tipos";
 
         flyway.migrate();
     }

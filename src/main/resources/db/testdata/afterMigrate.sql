@@ -15,6 +15,7 @@ delete from tblcontatotipo;
 delete from tbldocumentotipo;
 delete from tblenderecotipo;
 delete from tblformapagamentotipo;
+delete from tbllembretetipo;
 
 insert into tblramo values 
 (1,'AÇOUGUE', now() at time zone 'utc', now() at time zone 'utc'),
@@ -261,3 +262,9 @@ insert into tblclientevendaitem values
 (11, 5, 8, 3, 28.30, now() at time zone 'utc', now() at time zone 'utc'),
 (12, 5, 9, 3, 28.30, now() at time zone 'utc', now() at time zone 'utc'),
 (13, 6, 10, 3, 28.30, now() at time zone 'utc', now() at time zone 'utc');
+
+insert into tbllembretetipo values
+(1, 'Próximo contato', 7, now() at time zone 'utc', now() at time zone 'utc'),
+(2, 'Orçamento', 2, now() at time zone 'utc', now() at time zone 'utc'),
+(3, 'Venda', 15, now() at time zone 'utc', now() at time zone 'utc'),
+(4, 'Folder', 3, now() at time zone 'utc', now() at time zone 'utc');
