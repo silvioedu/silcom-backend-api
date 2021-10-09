@@ -3,6 +3,8 @@ package com.silcom.manager.api.dto.output;
 import java.math.BigDecimal;
 import java.time.OffsetDateTime;
 
+import com.silcom.manager.domain.model.VendaStatus;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -11,6 +13,7 @@ import lombok.Setter;
 public class ClienteVendaOutputDTO {
     
     private Long id;
+    private VendaStatus status;
     private String formaPagamentoTipoNome;
     private BigDecimal desconto;
     private BigDecimal agravo;

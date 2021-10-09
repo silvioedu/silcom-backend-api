@@ -1,6 +1,7 @@
 CREATE TABLE tblclientevenda(
     id bigint not null,
     id_cliente bigint not null REFERENCES tblcliente(id),
+    status varchar(10) not null,
     id_forma_pagamento_tipo bigint null REFERENCES tblformapagamentotipo(id),
     desconto decimal(5,2) not null DEFAULT 0,
     agravo decimal(5,2) not null DEFAULT 0,

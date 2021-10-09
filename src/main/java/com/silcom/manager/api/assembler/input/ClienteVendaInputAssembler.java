@@ -2,6 +2,7 @@ package com.silcom.manager.api.assembler.input;
 
 import com.silcom.manager.api.dto.input.ClienteVendaInputDTO;
 import com.silcom.manager.domain.model.FormaPagamentoTipo;
+import com.silcom.manager.domain.model.VendaStatus;
 import com.silcom.manager.domain.model.ClienteVenda;
 
 import org.springframework.stereotype.Component;
@@ -14,6 +15,7 @@ public class ClienteVendaInputAssembler {
         formaPagamentoTipo.setId(venda.getFormaPagamentoTipoId());
 
         return ClienteVenda.builder()
+            .status(VendaStatus.CRIADO)
             .formaPagamentoTipo(formaPagamentoTipo)
             .desconto(venda.getDesconto())
             .agravo(venda.getAgravo())

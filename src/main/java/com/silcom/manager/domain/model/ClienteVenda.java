@@ -5,6 +5,8 @@ import java.time.OffsetDateTime;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -36,6 +38,9 @@ public class ClienteVenda {
     @JoinColumn(name = "id_cliente")    
     private Cliente cliente;
 
+    @Enumerated(EnumType.STRING)
+    private VendaStatus status;
+
     @ManyToOne
     @JoinColumn(name = "id_forma_pagamento_tipo")    
     private FormaPagamentoTipo formaPagamentoTipo;
@@ -61,9 +66,10 @@ public class ClienteVenda {
         // default constructor
     }
 
-    public ClienteVenda(Long id, Cliente cliente, FormaPagamentoTipo formaPagamentoTipo, BigDecimal desconto, BigDecimal agravo, BigDecimal valorTotal, boolean emitirNota, String observacoes, OffsetDateTime dataCriacao, OffsetDateTime dataAtualizacao) {
+    public ClienteVenda(Long id, Cliente cliente, VendaStatus status, FormaPagamentoTipo formaPagamentoTipo, BigDecimal desconto, BigDecimal agravo, BigDecimal valorTotal, boolean emitirNota, String observacoes, OffsetDateTime dataCriacao, OffsetDateTime dataAtualizacao) {
         this.id = id;
         this.cliente = cliente;
+        this.status = status;
         this.formaPagamentoTipo = formaPagamentoTipo;
         this.desconto = desconto;
         this.agravo = agravo;
