@@ -7,6 +7,7 @@ import javax.transaction.Transactional;
 
 import com.silcom.manager.domain.exception.ResourceNotFoundException;
 import com.silcom.manager.domain.model.ClienteVenda;
+import com.silcom.manager.domain.model.VendaStatus;
 import com.silcom.manager.domain.repository.ClienteVendaRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -102,6 +103,12 @@ public class ClienteVendaService {
 
         venda.setValorTotal(total);
         this.update(venda.getCliente().getId(), clienteVendaId, venda);
+    }
+
+    public ClienteVenda updateStatus(Long clienteId, Long vendaId, VendaStatus status) {
+        ClienteVenda vendaRecovered = this.findById(clienteId, vendaId);
+        vendaRecovered.setStatus(status);
+        return vendaRepository.save(vendaRecovered);
     }
 
 }

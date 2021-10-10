@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import com.silcom.manager.api.dto.input.ClienteVendaInputDTO;
 import com.silcom.manager.domain.model.ClienteVenda;
 import com.silcom.manager.domain.model.ClienteVendaMock;
+import com.silcom.manager.domain.model.VendaStatus;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,5 +30,6 @@ class ClienteVendaInputAssemblerTest {
         assertEquals(origin.getAgravo(), destination.getAgravo());
         assertEquals(origin.getValorTotal(), destination.getValorTotal());
         assertEquals(origin.getObservacoes(), destination.getObservacoes());
+        assertEquals(VendaStatus.CRIADO, destination.getStatus());
     }
 }

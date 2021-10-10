@@ -91,8 +91,7 @@ public class ApiExceptionHandler extends ResponseEntityExceptionHandler {
     @Override
     protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex,
             HttpHeaders headers, HttpStatus status, WebRequest request) {
-
-        List<Field> problemFields = ex.getBindingResult().getAllErrors().stream().map(objectError -> {
+            List<Field> problemFields = ex.getBindingResult().getAllErrors().stream().map(objectError -> {
             String message = messageSource.getMessage(objectError, LocaleContextHolder.getLocale());
 
             String name = objectError.getObjectName();

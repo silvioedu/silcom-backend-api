@@ -199,4 +199,38 @@ class ClienteVendaControllerIT {
                 .body("$", hasKey("dataAtualizacao"));
     }
 
+    @Test
+    void shouldReturn200_whenReceivePUT_withValidStatusInput() {
+        RestAssured
+            .given()
+                .pathParam("clienteId", 1)
+                .pathParam("vendaId", 3)
+                .pathParam("status", "FECHADO")
+				.contentType(ContentType.JSON)
+                .accept(ContentType.JSON)
+            .when()
+                .put("/{vendaId}/update-status?status={status}")
+            .then()
+                .statusCode(HttpStatus.OK.value())
+                .body("status", containsString("FECHADO"))
+                .body("$", hasKey("id"))
+                .body("$", hasKey("dataCriacao"))
+                .body("$", hasKey("dataAtualizacao"));
+    }
+
+    @Test
+    void shouldReturn400_whenReceivePUT_withInvalidStatusInput() {
+        RestAssured
+            .given()
+                .pathParam("clienteId", 1)
+                .pathParam("vendaId", 3)
+                .pathParam("status", "NOVO")
+				.contentType(ContentType.JSON)
+                .accept(ContentType.JSON)
+            .when()
+                .put("/{vendaId}/update-status?status={status}")
+            .then()
+                .statusCode(HttpStatus.BAD_REQUEST.value());
+    }
+
 }

@@ -9,6 +9,7 @@ import com.silcom.manager.api.assembler.output.ClienteVendaOutputAssembler;
 import com.silcom.manager.api.dto.input.ClienteVendaInputDTO;
 import com.silcom.manager.api.dto.output.ClienteVendaOutputDTO;
 import com.silcom.manager.domain.model.ClienteVenda;
+import com.silcom.manager.domain.model.VendaStatus;
 import com.silcom.manager.domain.service.ClienteVendaService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -66,4 +67,11 @@ public class ClienteVendaController {
         ClienteVenda venda = vendaInputAssembler.toModel(vendaInputDTO);
         return vendaOutputAssembler.toDTO(vendaService.update(clienteId, vendaId, venda));
     }
+
+    @PutMapping("/{vendaId}/update-status")
+    public ClienteVendaOutputDTO updateStatus(@PathVariable(required = true) Long clienteId,
+        @PathVariable(required = true) Long vendaId, VendaStatus status) {
+            return vendaOutputAssembler.toDTO(vendaService.updateStatus(clienteId, vendaId, status));
+    }
+
 }
