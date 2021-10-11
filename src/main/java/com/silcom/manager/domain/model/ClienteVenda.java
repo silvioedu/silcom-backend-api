@@ -1,6 +1,7 @@
 package com.silcom.manager.domain.model;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.time.OffsetDateTime;
 
 import javax.persistence.Column;
@@ -85,6 +86,16 @@ public class ClienteVenda extends AbstractAggregateRoot<ClienteVenda> {
     
     public void confirmado() {
         registerEvent(new VendaConfirmadaEvent(this));
+    }
+
+    public void applyDesconto() {
+        BigDecimal coef = BigDecimal.valueOf(100).subtract(this.desconto).divide(BigDecimal.valueOf(100));
+        this.valorTotal = this.valorTotal.multiply(coef).setScale(2, RoundingMode.HALF_EVEN);
+    }
+
+    public void applyAgravo() {
+        BigDecimal coef = BigDecimal.valueOf(100).add(this.agravo).divide(BigDecimal.valueOf(100));
+        this.valorTotal = this.valorTotal.multiply(coef).setScale(2, RoundingMode.HALF_EVEN);
     }
 
 }

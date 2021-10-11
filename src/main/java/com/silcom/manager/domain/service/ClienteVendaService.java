@@ -13,6 +13,9 @@ import com.silcom.manager.domain.repository.ClienteVendaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 @Service
 public class ClienteVendaService {
     
@@ -75,7 +78,12 @@ public class ClienteVendaService {
         venda.setCliente(vendaRecovered.getCliente());
         venda.setFormaPagamentoTipo(formaPagamentoTipoService.findById(venda.getFormaPagamentoTipo().getId()));
         venda.setDataCriacao(vendaRecovered.getDataCriacao());
-        return vendaRepository.save(venda);
+        
+        ClienteVenda vendaSaved = vendaRepository.save(venda);
+
+        this.updateValorTotal(vendaSaved.getId());
+
+        return vendaSaved;
     }
 
     private ClienteVenda createVenda(ClienteVenda venda, Long clienteId) {
@@ -102,7 +110,16 @@ public class ClienteVendaService {
             .reduce(BigDecimal.ZERO, BigDecimal::add);
 
         venda.setValorTotal(total);
-        this.update(venda.getCliente().getId(), clienteVendaId, venda);
+        log.info("Valor antes dos coeficientes: " + venda.getValorTotal());
+
+        if (venda.getDesconto().compareTo(BigDecimal.ZERO) > 0) {
+            venda.applyDesconto();
+            log.info("Valor após DESCONTO: " + venda.getValorTotal());
+        }
+        if (venda.getAgravo().compareTo(BigDecimal.ZERO) > 0) {
+            venda.applyAgravo();
+            log.info("Valor após AGRAVO: " + venda.getValorTotal());
+        }
     }
 
     @Transactional
