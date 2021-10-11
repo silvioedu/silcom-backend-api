@@ -105,9 +105,15 @@ public class ClienteVendaService {
         this.update(venda.getCliente().getId(), clienteVendaId, venda);
     }
 
+    @Transactional
     public ClienteVenda updateStatus(Long clienteId, Long vendaId, VendaStatus status) {
         ClienteVenda vendaRecovered = this.findById(clienteId, vendaId);
         vendaRecovered.setStatus(status);
+
+        if (status.equals(VendaStatus.CONFIRMADO)) {
+            vendaRecovered.confirmado();
+        }
+        
         return vendaRepository.save(vendaRecovered);
     }
 

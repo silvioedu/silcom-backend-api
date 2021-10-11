@@ -13,20 +13,23 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.silcom.manager.domain.event.VendaConfirmadaEvent;
+
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.UpdateTimestamp;
+import org.springframework.data.domain.AbstractAggregateRoot;
 
 import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
-@EqualsAndHashCode(onlyExplicitlyIncluded = true)
+@EqualsAndHashCode(onlyExplicitlyIncluded = true, callSuper = false)
 @Builder
 @Data
 @Entity
 @Table(name = "tblclientevenda")
-public class ClienteVenda {
+public class ClienteVenda extends AbstractAggregateRoot<ClienteVenda> {
 
     @EqualsAndHashCode.Include
     @Id
@@ -80,5 +83,8 @@ public class ClienteVenda {
         this.dataAtualizacao = dataAtualizacao;
     }
     
+    public void confirmado() {
+        registerEvent(new VendaConfirmadaEvent(this));
+    }
 
 }

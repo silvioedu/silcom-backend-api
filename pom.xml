@@ -18,6 +18,8 @@
 		<modelmapper.version>2.4.2</modelmapper.version>
 		<restassured.version>4.4.0</restassured.version>
 		<logback-ext-loggly.version>0.1.5</logback-ext-loggly.version>
+		<javax-mail-api.version>1.6.2</javax-mail-api.version>
+		<spring-context-support.version>3.2.8.RELEASE</spring-context-support.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -72,6 +74,20 @@
 			<groupId>org.logback-extensions</groupId>
 			<artifactId>logback-ext-loggly</artifactId>
 			<version>${logback-ext-loggly.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-mail</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>javax.mail</groupId>
+			<artifactId>javax.mail-api</artifactId>
+			<version>${javax-mail-api.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context-support</artifactId>
+			<version>${spring-context-support.version}</version>
 		</dependency>
 	</dependencies>
 

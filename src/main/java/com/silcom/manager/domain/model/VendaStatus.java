@@ -3,7 +3,7 @@ package com.silcom.manager.domain.model;
 public enum VendaStatus {
     
     CRIADO("Criado"),
-    FECHADO("Fechado"),
+    CONFIRMADO("Confirmado"),
     ENTREGUE("Entregue"),
     CANCELADO("Cancelado");
 
