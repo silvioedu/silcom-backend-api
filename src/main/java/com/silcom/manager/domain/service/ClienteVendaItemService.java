@@ -49,6 +49,8 @@ public class ClienteVendaItemService {
         ClienteVendaItem vendaItemFormatado = createVendaItem(clienteId, clienteVendaId, vendaItem);
         ClienteVendaItem vendaSaved = vendaItemRepository.save(vendaItemFormatado);
         
+        clienteVendaService.updateValorTotal(clienteVendaId);
+
         return vendaSaved;
     }
 
@@ -65,6 +67,8 @@ public class ClienteVendaItemService {
         createVendaItem(clienteId, clienteVendaId, vendaItem);
         vendaItem.setId(vendaItemRecovered.getId());
         vendaItem.setDataCriacao(vendaItemRecovered.getDataCriacao());
+
+        clienteVendaService.updateValorTotal(clienteVendaId);
 
         return vendaItemRepository.save(vendaItem);
     }
