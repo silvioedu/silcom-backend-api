@@ -39,6 +39,8 @@ public class ClienteVendaItem {
     @JoinColumn(name = "id_produto")    
     private Produto produto;
 
+    private Integer tamanho;
+
     private Integer quantidade;
 
     private BigDecimal valorUnitario;
@@ -53,10 +55,11 @@ public class ClienteVendaItem {
         // default constructor
     }
 
-    public ClienteVendaItem(Long id, ClienteVenda clienteVenda, Produto produto, Integer quantidade, BigDecimal valorUnitario, OffsetDateTime dataCriacao, OffsetDateTime dataAtualizacao) {
+    public ClienteVendaItem(Long id, ClienteVenda clienteVenda, Produto produto, Integer tamanho, Integer quantidade, BigDecimal valorUnitario, OffsetDateTime dataCriacao, OffsetDateTime dataAtualizacao) {
         this.id = id;
         this.clienteVenda = clienteVenda;
         this.produto = produto;
+        this.tamanho = tamanho;
         this.quantidade = quantidade;
         this.valorUnitario = valorUnitario;
         this.dataCriacao = dataCriacao;

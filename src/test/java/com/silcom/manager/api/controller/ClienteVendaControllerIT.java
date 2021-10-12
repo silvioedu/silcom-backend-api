@@ -9,6 +9,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import com.silcom.manager.api.dto.input.ClienteVendaInputDTO;
 import com.silcom.manager.domain.model.ClienteVendaMock;
+import com.silcom.manager.domain.model.VendaStatus;
 
 import org.flywaydb.core.Flyway;
 import org.junit.jupiter.api.BeforeAll;
@@ -191,7 +192,7 @@ class ClienteVendaControllerIT {
                 .body("formaPagamentoTipoNome", containsString("À vista"))
                 .body("desconto", equalTo(0))
                 .body("agravo", equalTo(1))
-                .body("valorTotal", equalTo(2))
+                .body("valorTotal", equalTo(177.56F))
                 .body("emitirNota", equalTo(false))
                 .body("observacoes", containsString(input.getObservacoes()))
                 .body("$", hasKey("id"))
@@ -205,14 +206,14 @@ class ClienteVendaControllerIT {
             .given()
                 .pathParam("clienteId", 1)
                 .pathParam("vendaId", 3)
-                .pathParam("status", "FECHADO")
+                .pathParam("status", VendaStatus.CONFIRMADO.getDescricao().toUpperCase())
 				.contentType(ContentType.JSON)
                 .accept(ContentType.JSON)
             .when()
                 .put("/{vendaId}/update-status?status={status}")
             .then()
                 .statusCode(HttpStatus.OK.value())
-                .body("status", containsString("FECHADO"))
+                .body("status", containsString(VendaStatus.CONFIRMADO.getDescricao().toUpperCase()))
                 .body("$", hasKey("id"))
                 .body("$", hasKey("dataCriacao"))
                 .body("$", hasKey("dataAtualizacao"));

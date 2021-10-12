@@ -85,4 +85,20 @@ public class ClienteEndereco {
         }
     }
 
+    public String getDescription() {
+        
+        String description = String.format("%s, %s, %s, %s, %s, Cep: %s", 
+            this.logradouro,
+            this.numero,
+            this.bairro,
+            this.cidade,
+            this.estado,
+            this.cep);
+
+        if (!this.complemento.isEmpty()) {
+            description = description.concat(" - ").concat(this.complemento);
+        }
+        return description;
+    }
+
 }

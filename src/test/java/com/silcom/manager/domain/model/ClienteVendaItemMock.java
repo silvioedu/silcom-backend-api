@@ -14,6 +14,7 @@ public class ClienteVendaItemMock {
         venda.setId(RandomUtils.nextLong(1, 24));
         venda.setClienteVenda(ClienteVendaMock.getInstance());
         venda.setProduto(ProdutoMock.getRealInstance());
+        venda.setTamanho(RandomUtils.nextInt(35, 45));
         venda.setQuantidade(2);
         venda.setValorUnitario(BigDecimal.valueOf(27.20));
         venda.setDataCriacao(OffsetDateTime.now());
@@ -25,6 +26,7 @@ public class ClienteVendaItemMock {
         ClienteVendaItem venda = getInstance();
         ClienteVendaItemInputDTO input = new ClienteVendaItemInputDTO();
         input.setProdutoId(venda.getProduto().getId());
+        input.setTamanho(venda.getTamanho());;
         input.setQuantidade(venda.getQuantidade());
         input.setValorUnitario(venda.getValorUnitario());
         return input;

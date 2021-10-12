@@ -96,4 +96,10 @@ public class Produto {
         this.folder = this.folder.toUpperCase();
     }
 
+    public String getDescription() {
+        return String.format("%s %s %s", 
+            this.tipo.getNome(),
+            this.cor.getNome(),
+            this.detalhe.getNome());
+    }
 }

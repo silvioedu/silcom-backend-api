@@ -42,7 +42,7 @@ public class ClienteVendaService {
         return vendaRepository.findAllByClienteIdOrderByDataCriacaoAsc(clienteId);
     }
 
-    private ClienteVenda findByVendaId(final Long id) {
+    public ClienteVenda findByVendaId(final Long id) {
         return vendaRepository.findById(id)
             .orElseThrow(() -> new ResourceNotFoundException(
                 String.format(ID_NOT_FOUND, id, 0)

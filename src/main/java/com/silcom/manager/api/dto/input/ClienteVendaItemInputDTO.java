@@ -18,6 +18,10 @@ public class ClienteVendaItemInputDTO {
     private Long produtoId;
 
     @NotNull
+    @Positive
+    private Integer tamanho;
+
+    @NotNull
     @PositiveOrZero
     private Integer quantidade;
 

@@ -90,4 +90,7 @@ public class ClienteDocumento {
         }
     }
 
+    public String getIsentoDescription(){
+        return this.isento ? "Sim" : "Não";
+    }
 }

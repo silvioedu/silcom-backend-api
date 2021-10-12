@@ -212,11 +212,11 @@ insert into tblcliente values
 (4, 'Cliente número 4', 'Clientasso', 4, 'F', 'Observação 4', now() at time zone 'utc', now() at time zone 'utc');
 
 insert into tblclientecontato values 
-(1, 1, 1, '3366-3366', 'Residencial cliente 1', now() at time zone 'utc', now() at time zone 'utc'),
-(2, 1, 2, '93366-3366', 'Celular cliente 1', now() at time zone 'utc', now() at time zone 'utc'),
+(1, 1, 1, '(11) 3366-3366', 'Residencial cliente 1', now() at time zone 'utc', now() at time zone 'utc'),
+(2, 1, 2, '(11) 93366-3366', 'Celular cliente 1', now() at time zone 'utc', now() at time zone 'utc'),
 (3, 1, 3, 'cliente.1@cliente.com.br', 'Email cliente 1', now() at time zone 'utc', now() at time zone 'utc'),
-(4, 2, 1, '3344-3344', 'Residencial cliente 2', now() at time zone 'utc', now() at time zone 'utc'),
-(5, 2, 2, '91122-3344', 'Celular cliente 2', now() at time zone 'utc', now() at time zone 'utc'),
+(4, 2, 1, '(11) 3344-3344', 'Residencial cliente 2', now() at time zone 'utc', now() at time zone 'utc'),
+(5, 2, 2, '(11) 91122-3344', 'Celular cliente 2', now() at time zone 'utc', now() at time zone 'utc'),
 (6, 2, 3, 'cliente.2@cliente.com.br', 'Email cliente 2', now() at time zone 'utc', now() at time zone 'utc');
 
 insert into tblclientedocumento values 
@@ -250,19 +250,19 @@ insert into tblclientevenda values
 (6, 3, 'CRIADO', 1, 0, 0, 200, true, 'Observação venda do cliente 3/1', now() at time zone 'utc', now() at time zone 'utc');
 
 insert into tblclientevendaitem values
-(1, 1, 6, 1, 20.00, now() at time zone 'utc', now() at time zone 'utc'),
-(2, 1, 7, 1, 39.50, now() at time zone 'utc', now() at time zone 'utc'),
-(3, 1, 8, 2, 60.00, now() at time zone 'utc', now() at time zone 'utc'),
-(4, 2, 10, 5, 27.20, now() at time zone 'utc', now() at time zone 'utc'),
-(5, 2, 11, 2, 35.00, now() at time zone 'utc', now() at time zone 'utc'),
-(6, 3, 12, 1, 90.90, now() at time zone 'utc', now() at time zone 'utc'),
-(7, 3, 13, 3, 28.30, now() at time zone 'utc', now() at time zone 'utc'),
-(8, 4, 14, 3, 90.90, now() at time zone 'utc', now() at time zone 'utc'),
-(9, 4, 6, 3, 28.30, now() at time zone 'utc', now() at time zone 'utc'),
-(10, 5, 7, 3, 28.30, now() at time zone 'utc', now() at time zone 'utc'),
-(11, 5, 8, 3, 28.30, now() at time zone 'utc', now() at time zone 'utc'),
-(12, 5, 9, 3, 28.30, now() at time zone 'utc', now() at time zone 'utc'),
-(13, 6, 10, 3, 28.30, now() at time zone 'utc', now() at time zone 'utc');
+(1, 1, 6, 40, 1, 20.00, now() at time zone 'utc', now() at time zone 'utc'),
+(2, 1, 7, 41, 1, 39.50, now() at time zone 'utc', now() at time zone 'utc'),
+(3, 1, 8, 42, 2, 60.00, now() at time zone 'utc', now() at time zone 'utc'),
+(4, 2, 10, 42, 5, 27.20, now() at time zone 'utc', now() at time zone 'utc'),
+(5, 2, 11, 37, 2, 35.00, now() at time zone 'utc', now() at time zone 'utc'),
+(6, 3, 12, 38, 1, 90.90, now() at time zone 'utc', now() at time zone 'utc'),
+(7, 3, 13, 39, 3, 28.30, now() at time zone 'utc', now() at time zone 'utc'),
+(8, 4, 14, 40, 3, 90.90, now() at time zone 'utc', now() at time zone 'utc'),
+(9, 4, 6, 41, 3, 28.30, now() at time zone 'utc', now() at time zone 'utc'),
+(10, 5, 7, 39, 3, 28.30, now() at time zone 'utc', now() at time zone 'utc'),
+(11, 5, 8, 38, 3, 28.30, now() at time zone 'utc', now() at time zone 'utc'),
+(12, 5, 9, 37, 3, 28.30, now() at time zone 'utc', now() at time zone 'utc'),
+(13, 6, 10, 36, 3, 28.30, now() at time zone 'utc', now() at time zone 'utc');
 
 insert into tbllembretetipo values
 (1, 'Próximo contato', 7, now() at time zone 'utc', now() at time zone 'utc'),

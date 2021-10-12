@@ -16,6 +16,7 @@ public class ClienteVendaItemInputAssembler {
             
         return ClienteVendaItem.builder()
             .produto(produto)
+            .tamanho(vendaItem.getTamanho())
             .quantidade(vendaItem.getQuantidade())
             .valorUnitario(vendaItem.getValorUnitario())
             .build();

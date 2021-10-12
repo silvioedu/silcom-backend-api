@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import com.silcom.manager.domain.exception.DuplicateKeyException;
+import com.silcom.manager.domain.exception.ReportException;
 import com.silcom.manager.domain.exception.ResourceInUseException;
 import com.silcom.manager.domain.exception.ResourceNotFoundException;
 import com.silcom.manager.domain.exception.RestTemplateException;
@@ -28,7 +29,7 @@ public class ApiExceptionHandler extends ResponseEntityExceptionHandler {
     @Autowired
 	private MessageSource messageSource;
 
-    @ExceptionHandler({ RestTemplateException.class })
+    @ExceptionHandler({ RestTemplateException.class, ReportException.class })
 	public ResponseEntity<Object> handleApiRestTemplateException(RuntimeException ex) {
 
         Problem problem = createProblemBuilder(

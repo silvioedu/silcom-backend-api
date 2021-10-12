@@ -12,6 +12,7 @@ public class ClienteVendaItemOutputDTO {
     
     private Long id;
     private String produtoCodigo;
+    private Integer tamanho;
     private Integer quantidade;
     private BigDecimal valorUnitario;
     private OffsetDateTime dataCriacao;
