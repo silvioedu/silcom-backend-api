@@ -20,6 +20,7 @@
 		<logback-ext-loggly.version>0.1.5</logback-ext-loggly.version>
 		<javax-mail-api.version>1.6.2</javax-mail-api.version>
 		<spring-context-support.version>3.2.8.RELEASE</spring-context-support.version>
+		<jasperreports.version>6.17.0</jasperreports.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -88,6 +89,11 @@
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-context-support</artifactId>
 			<version>${spring-context-support.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>net.sf.jasperreports</groupId>
+			<artifactId>jasperreports</artifactId>
+			<version>${jasperreports.version}</version>
 		</dependency>
 	</dependencies>
 

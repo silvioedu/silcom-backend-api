@@ -38,7 +38,7 @@ public class ClienteDocumento {
     @JoinColumn(name = "id_cliente")    
     private Cliente cliente;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_tipo_documento")
     private DocumentoTipo documentoTipo;
     

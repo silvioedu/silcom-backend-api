@@ -1,5 +1,6 @@
 package com.silcom.manager.api.assembler.output;
 
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -24,12 +25,12 @@ public class VendaReportOutputAssembler {
         return VendaReportDTO.builder()
             .id(clienteVenda.getId())
             .clienteRazaoSocial(clienteVenda.getCliente().getRazaoSocial())
-            .status(clienteVenda.getStatus())
+            .status(clienteVenda.getStatus().getDescricao().toUpperCase())
             .formaPagamento(clienteVenda.getFormaPagamentoTipo().getNome())
             .valorTotal(clienteVenda.getValorTotal())
-            .emitirNota(clienteVenda.isEmitirNota())
+            .emitirNota(clienteVenda.getEmitirNotaDescription())
             .observacoes(clienteVenda.getObservacoes())
-            .dataCriacao(clienteVenda.getDataCriacao())
+            .dataCriacao(clienteVenda.getDataCriacao().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")))
             .itens(this.getVendaItensDTO(itensVenda))
             .documento(this.getDocumento(clienteDocumentos))
             .email(this.getEmail(clienteContatos))

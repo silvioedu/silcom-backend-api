@@ -7,6 +7,7 @@ import com.silcom.manager.domain.event.VendaConfirmadaEvent;
 import com.silcom.manager.domain.model.ClienteVenda;
 import com.silcom.manager.domain.model.EmailMessage;
 import com.silcom.manager.domain.service.MailService;
+import com.silcom.manager.domain.service.ReportService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -27,6 +28,9 @@ public class NotificacaoVendaConfirmadaListener {
 
     @Autowired
     private MailService mailService;
+    
+    @Autowired
+    private ReportService reportService;
 
     @Async
     @EventListener
@@ -46,12 +50,14 @@ public class NotificacaoVendaConfirmadaListener {
                     venda.getId(),
                     venda.getCliente().getRazaoSocial().toUpperCase())
             )
+            .data(reportService.getVendaPDF(venda.getId()))
             .body(
                 String.format(
-                    "Pedido %d realizado com sucesso.", 
+                    "Pedido %d realizado com sucesso.%n", 
                     venda.getId())
             )
             .build();
+
         mailService.send(message);
 
     }

@@ -20,5 +20,7 @@ public class EmailMessage {
     private String subject;
 
     private String body;
+
+    private byte[] data;
     
 }

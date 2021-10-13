@@ -98,4 +98,7 @@ public class ClienteVenda extends AbstractAggregateRoot<ClienteVenda> {
         this.valorTotal = this.valorTotal.multiply(coef).setScale(2, RoundingMode.HALF_EVEN);
     }
 
+    public String getEmitirNotaDescription(){
+        return this.emitirNota ? "Sim" : "Não";
+    }
 }
