@@ -8,9 +8,11 @@ import com.silcom.manager.api.assembler.input.ClienteVendaInputAssembler;
 import com.silcom.manager.api.assembler.output.ClienteVendaOutputAssembler;
 import com.silcom.manager.api.dto.input.ClienteVendaInputDTO;
 import com.silcom.manager.api.dto.output.ClienteVendaOutputDTO;
+import com.silcom.manager.api.dto.output.report.VendaReportDTO;
 import com.silcom.manager.domain.model.ClienteVenda;
 import com.silcom.manager.domain.model.VendaStatus;
 import com.silcom.manager.domain.service.ClienteVendaService;
+import com.silcom.manager.domain.service.ReportService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -36,6 +38,9 @@ public class ClienteVendaController {
 
     @Autowired
     private ClienteVendaInputAssembler vendaInputAssembler;
+
+    @Autowired
+    private ReportService reportService;
 
     @GetMapping
     public List<ClienteVendaOutputDTO> listAll(@PathVariable(required = true) Long clienteId) {
@@ -74,4 +79,9 @@ public class ClienteVendaController {
             return vendaOutputAssembler.toDTO(vendaService.updateStatus(clienteId, vendaId, status));
     }
 
+    @GetMapping("/{vendaId}/summary")
+    public VendaReportDTO getVendaSummary(@PathVariable(required = true) Long clienteId,
+        @PathVariable(required = true) Long vendaId) {
+        return reportService.getVendaSummary(clienteId, vendaId);
+    }
 }

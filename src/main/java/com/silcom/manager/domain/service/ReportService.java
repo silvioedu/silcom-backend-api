@@ -46,15 +46,9 @@ public class ReportService {
     @Autowired
     private VendaReportOutputAssembler vendaReportOutputAssembler;
 
-    public VendaReportDTO getVenda(Long id) {
-        final ClienteVenda clienteVenda = vendaService.findByVendaId(id);
-
-        if(Objects.isNull(clienteVenda.getCliente()) || Objects.isNull(clienteVenda.getCliente().getId())) {
-            throw new ReportException("Problemas ao gerar o relatório, venda não possui cliente");
-        }
-
-        final Long clienteId = clienteVenda.getCliente().getId();
-        final List<ClienteVendaItem> itensVenda = vendaItemService.findAllByVenda(id);
+    public VendaReportDTO getVendaSummary(Long clienteId, Long vendaId) {
+        final ClienteVenda clienteVenda = vendaService.findByVendaId(vendaId);
+        final List<ClienteVendaItem> itensVenda = vendaItemService.findAllByVenda(vendaId);
         final List<ClienteDocumento> clienteDocumentos = documentoService.findAll(clienteId);
         final List<ClienteContato> clienteContatos = contatoService.findAll(clienteId);
         final List<ClienteEndereco> clienteEnderecos = enderecoService.findAll(clienteId);
@@ -62,26 +56,26 @@ public class ReportService {
         return vendaReportOutputAssembler.toDTO(clienteVenda, itensVenda, clienteDocumentos, clienteContatos, clienteEnderecos);
     }
 
-    public byte[] getVendaPDF(Long id) {
-        try {
+    // public byte[] getVendaPDF(Log clienteId, Long id) {
+    //     try {
 
-            Map<String, Object> parameters = new HashMap<>();
-            parameters.put("REPORT_LOCALE", new Locale("pt", "BR"));
+    //         Map<String, Object> parameters = new HashMap<>();
+    //         parameters.put("REPORT_LOCALE", new Locale("pt", "BR"));
 
-            List<VendaReportDTO> vendas = new ArrayList<>();
-            vendas.add(this.getVenda(id));
+    //         List<VendaReportDTO> vendas = new ArrayList<>();
+    //         vendas.add(this.getVenda(id));
             
-			JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(vendas);
-            InputStream inputStream = this.getClass().getResourceAsStream("/reports/venda-report.jasper");
-			JasperPrint jasperPrint = JasperFillManager.fillReport(inputStream, parameters, dataSource);
+	// 		JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(vendas);
+    //         InputStream inputStream = this.getClass().getResourceAsStream("/reports/venda-report.jasper");
+	// 		JasperPrint jasperPrint = JasperFillManager.fillReport(inputStream, parameters, dataSource);
 		
-			return JasperExportManager.exportReportToPdf(jasperPrint);
+	// 		return JasperExportManager.exportReportToPdf(jasperPrint);
 
-        } catch (Exception e) {
-            throw new ReportException("Deu erro na geração do PDF "+ e);
-        }
+    //     } catch (Exception e) {
+    //         throw new ReportException("Deu erro na geração do PDF "+ e);
+    //     }
 
-    }
+    // }
 
 
 }

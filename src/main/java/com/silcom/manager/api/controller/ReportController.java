@@ -19,19 +19,19 @@ public class ReportController {
     @Autowired
     private ReportService reportService;
 
-    @GetMapping("/vendas/{id}")
-    public VendaReportDTO getVenda(@PathVariable(required = true) Long id) {
-        return reportService.getVenda(id);
-    }
+    // @GetMapping("/vendas/{id}")
+    // public VendaReportDTO getVenda(@PathVariable(required = true) Long id) {
+    //     // return reportService.getVenda(id);
+    // }
 
-    @GetMapping(path = "/vendas/{id}/pdf", produces = MediaType.APPLICATION_PDF_VALUE)
-    public ResponseEntity<byte[]> getVendaPDF(@PathVariable(required = true) Long id) {
-        HttpHeaders headers = new HttpHeaders();
-        headers.add(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=pedido.pdf");
-        return ResponseEntity.ok()
-            .contentType(MediaType.APPLICATION_PDF)
-            .headers(headers)
-            .body(reportService.getVendaPDF(id));
-    }
+    // @GetMapping(path = "/vendas/{id}/pdf", produces = MediaType.APPLICATION_PDF_VALUE)
+    // public ResponseEntity<byte[]> getVendaPDF(@PathVariable(required = true) Long id) {
+    //     HttpHeaders headers = new HttpHeaders();
+    //     headers.add(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=pedido.pdf");
+    //     return ResponseEntity.ok()
+    //         .contentType(MediaType.APPLICATION_PDF)
+    //         .headers(headers)
+    //         .body(reportService.getVendaPDF(id));
+    // }
 
 }

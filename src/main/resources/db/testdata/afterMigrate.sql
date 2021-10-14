@@ -243,7 +243,7 @@ insert into tblformapagamentotipo values
 
 insert into tblclientevenda values
 (1, 1, 'CRIADO', 1, 0, 0, 100, false, 'Observação venda do cliente 1', now() at time zone 'utc', now() at time zone 'utc'),
-(2, 1, 'CRIADO', 1, 0, 0, 200, true, 'Observação venda do cliente 1/2', now() at time zone 'utc', now() at time zone 'utc'),
+(2, 1, 'CRIADO', 1, 0, 0, 200, true, 'Observação venda do cliente 1/2 Observação venda do cliente 1/2 Observação venda do cliente 1/2 Observação venda do cliente 1/2 Observação venda do cliente 1/2 Observação venda do cliente 1/2 Observação venda do cliente 1/2 ', now() at time zone 'utc', now() at time zone 'utc'),
 (3, 1, 'CRIADO', 1, 0, 0, 200, false, 'Observação venda do cliente 1/3', now() at time zone 'utc', now() at time zone 'utc'),
 (4, 2, 'CRIADO', 1, 0, 0, 200, true, 'Observação venda do cliente 2/1', now() at time zone 'utc', now() at time zone 'utc'),
 (5, 3, 'CRIADO', 1, 0, 0, 200, false, 'Observação venda do cliente 3/1', now() at time zone 'utc', now() at time zone 'utc'),

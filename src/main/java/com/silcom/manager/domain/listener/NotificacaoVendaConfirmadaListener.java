@@ -50,7 +50,7 @@ public class NotificacaoVendaConfirmadaListener {
                     venda.getId(),
                     venda.getCliente().getRazaoSocial().toUpperCase())
             )
-            .data(reportService.getVendaPDF(venda.getId()))
+            // .data(reportService.getVendaPDF(venda.getId()))
             .body(
                 String.format(
                     "Pedido %d realizado com sucesso.%n", 

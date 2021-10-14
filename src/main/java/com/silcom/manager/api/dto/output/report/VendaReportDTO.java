@@ -1,7 +1,10 @@
 package com.silcom.manager.api.dto.output.report;
 
 import java.math.BigDecimal;
+import java.time.OffsetDateTime;
 import java.util.List;
+
+import com.silcom.manager.domain.model.VendaStatus;
 
 import lombok.Builder;
 import lombok.Getter;
@@ -16,10 +19,10 @@ public class VendaReportDTO {
     
     private Long id;
 
-    private String dataCriacao;
+    private OffsetDateTime dataCriacao;
     private String formaPagamento;
-    private String emitirNota;
-    private String status;
+    private boolean emitirNota;
+    private VendaStatus status;
     
     private String clienteRazaoSocial;
     private String documento;
