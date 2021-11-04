@@ -1,16 +1,9 @@
 package com.silcom.manager.domain.service;
 
-import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Objects;
 
 import com.silcom.manager.api.assembler.output.VendaReportOutputAssembler;
 import com.silcom.manager.api.dto.output.report.VendaReportDTO;
-import com.silcom.manager.domain.exception.ReportException;
 import com.silcom.manager.domain.model.ClienteContato;
 import com.silcom.manager.domain.model.ClienteDocumento;
 import com.silcom.manager.domain.model.ClienteEndereco;
@@ -19,11 +12,6 @@ import com.silcom.manager.domain.model.ClienteVendaItem;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import net.sf.jasperreports.engine.JasperExportManager;
-import net.sf.jasperreports.engine.JasperFillManager;
-import net.sf.jasperreports.engine.JasperPrint;
-import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 
 @Service
 public class ReportService {
@@ -55,27 +43,5 @@ public class ReportService {
 
         return vendaReportOutputAssembler.toDTO(clienteVenda, itensVenda, clienteDocumentos, clienteContatos, clienteEnderecos);
     }
-
-    // public byte[] getVendaPDF(Log clienteId, Long id) {
-    //     try {
-
-    //         Map<String, Object> parameters = new HashMap<>();
-    //         parameters.put("REPORT_LOCALE", new Locale("pt", "BR"));
-
-    //         List<VendaReportDTO> vendas = new ArrayList<>();
-    //         vendas.add(this.getVenda(id));
-            
-	// 		JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(vendas);
-    //         InputStream inputStream = this.getClass().getResourceAsStream("/reports/venda-report.jasper");
-	// 		JasperPrint jasperPrint = JasperFillManager.fillReport(inputStream, parameters, dataSource);
-		
-	// 		return JasperExportManager.exportReportToPdf(jasperPrint);
-
-    //     } catch (Exception e) {
-    //         throw new ReportException("Deu erro na geração do PDF "+ e);
-    //     }
-
-    // }
-
 
 }

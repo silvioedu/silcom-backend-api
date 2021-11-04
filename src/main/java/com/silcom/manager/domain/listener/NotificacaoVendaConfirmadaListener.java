@@ -6,7 +6,6 @@ import java.util.List;
 import com.silcom.manager.domain.event.VendaConfirmadaEvent;
 import com.silcom.manager.domain.model.ClienteVenda;
 import com.silcom.manager.domain.model.EmailMessage;
-import com.silcom.manager.domain.service.MailService;
 import com.silcom.manager.domain.service.ReportService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,9 +24,6 @@ public class NotificacaoVendaConfirmadaListener {
 
     @Value("${silcom.mail.sender.address}")
     private String recipient;
-
-    @Autowired
-    private MailService mailService;
     
     @Autowired
     private ReportService reportService;
@@ -57,8 +53,6 @@ public class NotificacaoVendaConfirmadaListener {
                     venda.getId())
             )
             .build();
-
-        mailService.send(message);
 
     }
 

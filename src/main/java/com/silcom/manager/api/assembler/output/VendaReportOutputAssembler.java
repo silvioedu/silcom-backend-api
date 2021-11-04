@@ -1,6 +1,5 @@
 package com.silcom.manager.api.assembler.output;
 
-import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.stream.Collectors;
 
